@@ -24,7 +24,7 @@ cmd_build() {
         --build-arg REGISTRY="${REGISTRY}" \
         -t "${IMAGE_NAME}:${TAG}" \
         -f Dockerfile \
-        ../../../
+        ../../
     echo ">>> Build complete: ${IMAGE_NAME}:${TAG}"
 }
 

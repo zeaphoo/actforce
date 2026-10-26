@@ -77,8 +77,8 @@ pnpm build:actforce
 
 ### 发行
 
-- `distribution/actforce/docker/`：Docker 构建
-- `distribution/actforce/installer/`：安装/升级工具
+- `distribution/docker/`：Docker 构建
+- `distribution/installer/`：安装/升级工具
 
 ## 与 ActForce-Super 的关系
 
