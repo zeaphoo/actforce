@@ -3,7 +3,7 @@ set -e
 
 # ActForce Docker 构建脚本
 
-REGISTRY="${REGISTRY:-docker.m.daocloud.io}"
+REGISTRY="${REGISTRY:-docker.m.daocloud.io/}"
 IMAGE_NAME="actforce"
 TAG="${TAG:-latest}"
 

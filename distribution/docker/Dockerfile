@@ -4,7 +4,7 @@
 # ============================================================
 
 # ---------- 构建参数 ----------
-ARG REGISTRY=docker.m.daocloud.io
+ARG REGISTRY=docker.m.daocloud.io/
 ARG TARGETARCH=amd64
 
 # ---------- 构建阶段：Rust 应用 ----------
