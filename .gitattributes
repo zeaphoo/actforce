@@ -1,2 +1,0 @@
-docker/vendor/qsv/dist/** filter=lfs diff=lfs merge=lfs -text
-docker/vendor/qsv/dist-musl-static/** filter=lfs diff=lfs merge=lfs -text

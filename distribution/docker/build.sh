@@ -19,6 +19,24 @@ usage() {
 }
 
 cmd_build() {
+    local host_arch target_arch qsv_bin
+    host_arch="$(uname -m)"
+    case "$host_arch" in
+        x86_64|amd64) target_arch=amd64 ;;
+        aarch64|arm64) target_arch=arm64 ;;
+        *)
+            echo "Error: unsupported host architecture: $host_arch" >&2
+            exit 1
+            ;;
+    esac
+
+    qsv_bin="../../docker/vendor/qsv/dist/${target_arch}/qsv"
+    if [ ! -f "$qsv_bin" ]; then
+        echo "Error: qsv binary not found: $qsv_bin" >&2
+        echo "Build it first: (cd docker/vendor/qsv && ./build.sh)" >&2
+        exit 1
+    fi
+
     echo ">>> Building ${IMAGE_NAME}:${TAG} ..."
     docker build \
         --build-arg REGISTRY="${REGISTRY}" \

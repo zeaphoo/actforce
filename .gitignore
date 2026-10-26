@@ -30,8 +30,6 @@ yarn-error.log*
 *.swp
 *.swo
 
-# qsv vendor binaries (tracked via Git LFS)
-!docker/vendor/qsv/dist/
-!docker/vendor/qsv/dist/**
-!docker/vendor/qsv/dist-musl-static/
-!docker/vendor/qsv/dist-musl-static/**
+# qsv build outputs (compiled locally, not committed)
+docker/vendor/qsv/dist/
+docker/vendor/qsv/dist-musl-static/
