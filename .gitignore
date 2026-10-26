@@ -31,5 +31,5 @@ yarn-error.log*
 *.swo
 
 # qsv build outputs (compiled locally, not committed)
-docker/vendor/qsv/dist/
-docker/vendor/qsv/dist-musl-static/
+distribution/docker/vendor/qsv/dist/
+distribution/docker/vendor/qsv/dist-musl-static/

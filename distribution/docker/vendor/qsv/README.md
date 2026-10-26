@@ -6,7 +6,7 @@ ActForce 的 Excel/CSV 技能、`common::qsv` 和 agent 执行器都会调用 `q
 ## 目录
 
 ```text
-docker/vendor/qsv/
+distribution/docker/vendor/qsv/
 ├── Dockerfile                 # glibc 构建
 ├── Dockerfile.musl-static     # musl 静态构建
 ├── build.sh                   # 构建 dist/{amd64,arm64}/qsv
@@ -21,7 +21,7 @@ docker/vendor/qsv/
 需要 Docker buildx：
 
 ```bash
-cd docker/vendor/qsv
+cd distribution/docker/vendor/qsv
 
 # glibc 版本
 ./build.sh
@@ -39,14 +39,14 @@ cd docker/vendor/qsv
 Docker 构建前先生成对应架构的 qsv：
 
 ```bash
-cd docker/vendor/qsv
+cd distribution/docker/vendor/qsv
 ./build.sh
 ```
 
 `distribution/docker/Dockerfile` 会按 `TARGETARCH` 复制：
 
 ```text
-docker/vendor/qsv/dist/${TARGETARCH}/qsv -> /app/bin/qsv
+distribution/docker/vendor/qsv/dist/${TARGETARCH}/qsv -> /app/bin/qsv
 ```
 
 并把 `/app/bin` 加入 `PATH`，保证 `qsv` 可被 `which("qsv")` 和 agent bash 找到。

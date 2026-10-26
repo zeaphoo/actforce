@@ -30,10 +30,10 @@ cmd_build() {
             ;;
     esac
 
-    qsv_bin="../../docker/vendor/qsv/dist/${target_arch}/qsv"
+    qsv_bin="vendor/qsv/dist/${target_arch}/qsv"
     if [ ! -f "$qsv_bin" ]; then
         echo "Error: qsv binary not found: $qsv_bin" >&2
-        echo "Build it first: (cd docker/vendor/qsv && ./build.sh)" >&2
+        echo "Build it first: (cd distribution/docker/vendor/qsv && ./build.sh)" >&2
         exit 1
     fi
 

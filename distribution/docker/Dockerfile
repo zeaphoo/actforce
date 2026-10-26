@@ -35,8 +35,8 @@ RUN apt-get update && apt-get install -y \
 COPY --from=rust-build /app/target/release/actforce /app/bin/actforce
 
 # qsv：Excel/CSV 技能和 agent 执行器依赖
-# 构建前先运行 docker/vendor/qsv/build.sh 生成 dist/${TARGETARCH}/qsv
-COPY docker/vendor/qsv/dist/${TARGETARCH}/qsv /app/bin/qsv
+# 构建前先运行 distribution/docker/vendor/qsv/build.sh 生成 dist/${TARGETARCH}/qsv
+COPY distribution/docker/vendor/qsv/dist/${TARGETARCH}/qsv /app/bin/qsv
 RUN chmod +x /app/bin/qsv && /app/bin/qsv --version
 
 # 创建数据目录

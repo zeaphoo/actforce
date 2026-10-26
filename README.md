@@ -32,12 +32,11 @@ web/               公开 Web UI（AppShell + Entitlements）
 packages/          共享前端包（chat-ui / file-manager）
 docs/              产品与标准设计文档（AuPage 等）
 desktop/           Electron 桌面壳
-distribution/      Docker / 安装器发行文件
-docker/            qsv vendor（构建脚本，二进制按需编译）
+distribution/      Docker / 安装器发行文件（含 qsv vendor）
 thecli/            独立 workspace（CLI 工具集，自带 Cargo.toml/Cargo.lock）
 ```
 
-> qsv 二进制不提交 Git；Docker 构建前先运行 `docker/vendor/qsv/build.sh`。
+> qsv 二进制不提交 Git；Docker 构建前先运行 `distribution/docker/vendor/qsv/build.sh`。
 
 不包含 `actforce-mega`、`actforce-super`、`super-license`、`agent-analysis`。
 
@@ -96,9 +95,8 @@ cargo build --manifest-path thecli/Cargo.toml --release
 
 ### 发行
 
-- `distribution/docker/`：Docker 构建，镜像内包含 `qsv`
+- `distribution/docker/`：Docker 构建，镜像内包含 `qsv`（qsv 构建脚本在 `vendor/qsv/`）
 - `distribution/installer/`：安装/升级工具
-- `docker/vendor/qsv/`：qsv 构建脚本（二进制按需编译，不提交 Git）
 
 ## 与 ActForce-Super 的关系
 
