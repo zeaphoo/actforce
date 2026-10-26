@@ -30,6 +30,7 @@ crates/
   teamchat/        团队聊天服务
 web/               公开 Web UI（AppShell + Entitlements）
 packages/          共享前端包（chat-ui / file-manager）
+docs/              产品与标准设计文档（AuPage 等）
 desktop/           Electron 桌面壳
 distribution/      Docker / 安装器发行文件
 thecli/            独立 workspace（CLI 工具集，自带 Cargo.toml/Cargo.lock）
