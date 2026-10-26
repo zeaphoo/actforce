@@ -1,0 +1,12 @@
+.git
+.gitignore
+**/target
+target
+node_modules
+**/node_modules
+web/dist
+desktop/dist
+distribution/installer/target
+data
+.env
+*.log
