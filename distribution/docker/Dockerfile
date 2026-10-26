@@ -5,9 +5,10 @@
 
 # ---------- 构建参数 ----------
 ARG REGISTRY=docker.m.daocloud.io
+ARG TARGETARCH=amd64
 
 # ---------- 构建阶段：Rust 应用 ----------
-FROM ${REGISTRY}rust:1.75-bookworm AS rust-build
+FROM ${REGISTRY}rust:1.92-bookworm AS rust-build
 
 WORKDIR /app
 
@@ -20,6 +21,7 @@ RUN cargo build --release -p actforce
 
 # ---------- 运行阶段 ----------
 FROM ${REGISTRY}debian:bookworm-slim
+ARG TARGETARCH=amd64
 
 WORKDIR /app
 
@@ -32,10 +34,15 @@ RUN apt-get update && apt-get install -y \
 # 复制二进制
 COPY --from=rust-build /app/target/release/actforce /app/bin/actforce
 
+# qsv：Excel/CSV 技能和 agent 执行器依赖（预编译，按目标架构选择）
+COPY docker/vendor/qsv/dist/${TARGETARCH}/qsv /app/bin/qsv
+RUN chmod +x /app/bin/qsv && /app/bin/qsv --version
+
 # 创建数据目录
 RUN mkdir -p /app/data
 
 # 环境变量
+ENV PATH="/app/bin:${PATH}"
 ENV ACTFORCE_DATA_ROOT=/app/data
 ENV ACTFORCE_DEBUG=false
 

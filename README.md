@@ -33,8 +33,11 @@ packages/          共享前端包（chat-ui / file-manager）
 docs/              产品与标准设计文档（AuPage 等）
 desktop/           Electron 桌面壳
 distribution/      Docker / 安装器发行文件
+docker/            qsv vendor（构建脚本 + Git LFS 预编译二进制）
 thecli/            独立 workspace（CLI 工具集，自带 Cargo.toml/Cargo.lock）
 ```
+
+> qsv 二进制由 Git LFS 管理，首次 clone 后执行 `git lfs pull`。
 
 不包含 `actforce-mega`、`actforce-super`、`super-license`、`agent-analysis`。
 
@@ -93,8 +96,9 @@ cargo build --manifest-path thecli/Cargo.toml --release
 
 ### 发行
 
-- `distribution/docker/`：Docker 构建
+- `distribution/docker/`：Docker 构建，镜像内包含 `qsv`
 - `distribution/installer/`：安装/升级工具
+- `docker/vendor/qsv/`：qsv 构建脚本和预编译二进制
 
 ## 与 ActForce-Super 的关系
 

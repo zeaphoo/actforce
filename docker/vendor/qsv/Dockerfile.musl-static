@@ -1,0 +1,67 @@
+ARG REGISTRY=docker.m.daocloud.io/
+#ARG REGISTRY=docker.1ms.run/
+
+ARG RUST_GNU_IMAGE=${REGISTRY}rust:1.92-bookworm
+
+FROM --platform=$TARGETPLATFORM ${RUST_GNU_IMAGE} AS build
+
+ARG TARGETPLATFORM
+ARG QSV_VERSION=
+ARG RUST_TOOLCHAIN=stable
+ARG QSV_ALL_FEATURES=0
+ARG QSV_FEATURES=feature_capable
+ARG QSV_GIT_REPO=https://github.com/dathere/qsv
+ARG QSV_INSTALL_ROOT=/opt/qsv
+ARG CACHE_BUST=0
+ARG CARGO_BUILD_JOBS=1
+ARG CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+ARG CARGO_PROFILE_RELEASE_LTO=false
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+      ca-certificates \
+      pkg-config \
+      git \
+      musl-tools \
+      libssl-dev \
+      zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN if [ "$RUST_TOOLCHAIN" = "nightly" ]; then \
+      rustup toolchain install nightly --profile minimal; \
+    fi
+
+RUN case "$TARGETPLATFORM" in \
+      "linux/amd64") echo "x86_64-unknown-linux-musl" >/tmp/rust-target ;; \
+      "linux/arm64") echo "aarch64-unknown-linux-musl" >/tmp/rust-target ;; \
+      *) echo "Unsupported TARGETPLATFORM=$TARGETPLATFORM" >&2; exit 1 ;; \
+    esac; \
+    rustup target add "$(cat /tmp/rust-target)"
+
+RUN echo "CACHE_BUST=$CACHE_BUST" >/dev/null; \
+    TOOLCHAIN=""; \
+    if [ "$RUST_TOOLCHAIN" = "nightly" ]; then TOOLCHAIN="+nightly"; fi; \
+    FEATURES_ARGS=""; \
+    if [ "$QSV_ALL_FEATURES" = "1" ]; then \
+      FEATURES_ARGS="--all-features"; \
+    elif [ -n "$QSV_FEATURES" ]; then \
+      FEATURES_ARGS="--features $QSV_FEATURES"; \
+    fi; \
+    RUST_TARGET="$(cat /tmp/rust-target)"; \
+    export OPENSSL_STATIC=1; \
+    export RUSTFLAGS="${RUSTFLAGS:-} -C target-feature=+crt-static"; \
+    if [ -n "$QSV_VERSION" ]; then \
+      (CARGO_BUILD_JOBS="$CARGO_BUILD_JOBS" CARGO_PROFILE_RELEASE_CODEGEN_UNITS="$CARGO_PROFILE_RELEASE_CODEGEN_UNITS" CARGO_PROFILE_RELEASE_LTO="$CARGO_PROFILE_RELEASE_LTO" \
+         cargo $TOOLCHAIN install qsv --bin qsv --locked --target "$RUST_TARGET" --jobs "$CARGO_BUILD_JOBS" $FEATURES_ARGS --root "$QSV_INSTALL_ROOT" --git "$QSV_GIT_REPO" --tag "$QSV_VERSION" || \
+       CARGO_BUILD_JOBS="$CARGO_BUILD_JOBS" CARGO_PROFILE_RELEASE_CODEGEN_UNITS="$CARGO_PROFILE_RELEASE_CODEGEN_UNITS" CARGO_PROFILE_RELEASE_LTO="$CARGO_PROFILE_RELEASE_LTO" \
+         cargo $TOOLCHAIN install qsv --bin qsv --locked --target "$RUST_TARGET" --jobs "$CARGO_BUILD_JOBS" $FEATURES_ARGS --root "$QSV_INSTALL_ROOT" --git "$QSV_GIT_REPO" --tag "v$QSV_VERSION"); \
+    else \
+      CARGO_BUILD_JOBS="$CARGO_BUILD_JOBS" CARGO_PROFILE_RELEASE_CODEGEN_UNITS="$CARGO_PROFILE_RELEASE_CODEGEN_UNITS" CARGO_PROFILE_RELEASE_LTO="$CARGO_PROFILE_RELEASE_LTO" \
+        cargo $TOOLCHAIN install qsv --bin qsv --locked --target "$RUST_TARGET" --jobs "$CARGO_BUILD_JOBS" $FEATURES_ARGS --root "$QSV_INSTALL_ROOT" --git "$QSV_GIT_REPO"; \
+    fi; \
+    test -x "$QSV_INSTALL_ROOT/bin/qsv"
+
+RUN mkdir -p /out && cp "$QSV_INSTALL_ROOT/bin/qsv" /out/qsv
+
+FROM scratch AS export
+COPY --from=build /out/qsv /qsv
