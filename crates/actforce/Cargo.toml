@@ -1,0 +1,13 @@
+[package]
+name = "actforce"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "actforce"
+path = "src/main.rs"
+
+[dependencies]
+actforce-core = { path = "../actforce-core" }
+anyhow = { workspace = true }

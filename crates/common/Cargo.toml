@@ -1,0 +1,30 @@
+[package]
+name = "common"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["fs", "io-util"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# 文档处理
+tempfile = "3"
+csv = "1"
+calamine = "0.26"
+sqlparser = "0.46"
+shell-words = "1"
+pulldown-cmark = "0.12"
+pulldown-cmark-to-cmark = "11"
+image = "0.25"               # 图像处理
+kamadak-exif = "0.6"         # EXIF 读取
+rust_decimal = "1.36"        # 高精度数字
+regex = "1"
+
+# 代码解析 (tree-sitter)
+tree-sitter = "0.26"
+tree-sitter-bash = "0.25"
+tree-sitter-python = "0.25"

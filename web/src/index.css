@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+@layer base {
+  button {
+    background-color: transparent;
+  }
+  button:focus {
+    outline: none;
+  }
+
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+    --primary: 15.1765 72.6496% 54.1176%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217.2973 44.0476% 32.9412%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 20.0000% 98.0392%;
+    --muted-foreground: 220 8.9362% 46.0784%;
+    --accent: 207.6923 46.4286% 89.0196%;
+    --accent-foreground: 224.4444 64.2857% 32.9412%;
+    --destructive: 0 84.2365% 60.1961%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 80%;
+    --input: 220 15.7895% 96.2745%;
+    --ring: 13.2143 73.0435% 54.9020%;
+    --chart-1: 210 37.2549% 60%;
+    --chart-2: 17.2500 72.7273% 56.8627%;
+    --chart-3: 355.0345 63.3188% 55.0980%;
+    --chart-4: 41.1538 72.8972% 58.0392%;
+    --chart-5: 223.4483 32.5843% 34.9020%;
+    --sidebar: 216 7.9365% 87.6471%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 13.2143 73.0435% 54.9020%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 207.6923 46.4286% 89.0196%;
+    --sidebar-accent-foreground: 224.4444 64.2857% 32.9412%;
+    --sidebar-border: 220 13.0435% 90.9804%;
+    --sidebar-ring: 13.2143 73.0435% 54.9020%;
+    --font-sans: Outfit, sans-serif;
+    --font-serif: Merriweather, serif;
+    --font-mono: Fira Code, monospace;
+    --radius: 0.5rem;
+    --shadow-x: 0px;
+    --shadow-y: 1px;
+    --shadow-blur: 3px;
+    --shadow-spread: 0px;
+    --shadow-opacity: 0.1;
+    --shadow-color: #1a1a1a;
+    --shadow-2xs: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.05);
+    --shadow-xs: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.05);
+    --shadow-sm: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.10), 0px 1px 2px -1px hsl(0 0% 10.1961% / 0.10);
+    --shadow: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.10), 0px 1px 2px -1px hsl(0 0% 10.1961% / 0.10);
+    --shadow-md: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.10), 0px 2px 4px -1px hsl(0 0% 10.1961% / 0.10);
+    --shadow-lg: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.10), 0px 4px 6px -1px hsl(0 0% 10.1961% / 0.10);
+    --shadow-xl: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.10), 0px 8px 10px -1px hsl(0 0% 10.1961% / 0.10);
+    --shadow-2xl: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.25);
+    --tracking-normal: 0em;
+    --spacing: 0.25rem;
+  }
+
+  .dark {
+    --background: 0 0% 10.1961%;
+    --foreground: 0 0% 89.8039%;
+    --card: 0 0% 12.5490%;
+    --card-foreground: 0 0% 89.8039%;
+    --popover: 0 0% 12.5490%;
+    --popover-foreground: 0 0% 89.8039%;
+    --primary: 15.1765 72.6496% 54.1176%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 216.1905 44.0559% 28.0392%;
+    --secondary-foreground: 0 0% 89.8039%;
+    --muted: 0 0% 16.4706%;
+    --muted-foreground: 0 0% 50.1961%;
+    --accent: 223.6364 34.3750% 25.0980%;
+    --accent-foreground: 213.3333 96.9231% 87.2549%;
+    --destructive: 0 84.2365% 60.1961%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20.7843%;
+    --input: 0 0% 18.8235%;
+    --ring: 13.2143 73.0435% 54.9020%;
+    --chart-1: 210 37.0787% 65.0980%;
+    --chart-2: 17.2500 72.7273% 56.8627%;
+    --chart-3: 355.0345 63.3188% 55.0980%;
+    --chart-4: 41.1538 72.8972% 58.0392%;
+    --chart-5: 223.4483 32.5843% 34.9020%;
+    --sidebar: 0 0% 12.1569%;
+    --sidebar-foreground: 0 0% 89.8039%;
+    --sidebar-primary: 13.2143 73.0435% 54.9020%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 223.6364 34.3750% 25.0980%;
+    --sidebar-accent-foreground: 213.3333 96.9231% 87.2549%;
+    --sidebar-border: 0 0% 20.7843%;
+    --sidebar-ring: 13.2143 73.0435% 54.9020%;
+    --font-sans: Outfit, sans-serif;
+    --font-serif: Merriweather, serif;
+    --font-mono: Fira Code, monospace;
+    --radius: 0.5rem;
+    --shadow-x: 0px;
+    --shadow-y: 1px;
+    --shadow-blur: 3px;
+    --shadow-spread: 0px;
+    --shadow-opacity: 0.1;
+    --shadow-color: #1a1a1a;
+    --shadow-2xs: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.05);
+    --shadow-xs: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.05);
+    --shadow-sm: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.10), 0px 1px 2px -1px hsl(0 0% 10.1961% / 0.10);
+    --shadow: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.10), 0px 1px 2px -1px hsl(0 0% 10.1961% / 0.10);
+    --shadow-md: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.10), 0px 2px 4px -1px hsl(0 0% 10.1961% / 0.10);
+    --shadow-lg: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.10), 0px 4px 6px -1px hsl(0 0% 10.1961% / 0.10);
+    --shadow-xl: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.10), 0px 8px 10px -1px hsl(0 0% 10.1961% / 0.10);
+    --shadow-2xl: 0px 1px 3px 0px hsl(0 0% 10.1961% / 0.25);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* 自定义滚动条样式 */
+@layer utilities {
+  /* Webkit 浏览器滚动条 */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* Firefox 滚动条 */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+}

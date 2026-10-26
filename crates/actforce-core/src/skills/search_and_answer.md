@@ -1,0 +1,83 @@
+---
+id: sk_search_and_answer
+name: 搜索与回答
+description: 从文件系统中检索相关信息来回答用户问题。
+is_enabled: true
+program: null
+extra_json:
+  icon: Search
+  category: 文件检索
+  tags:
+  - 文件搜索
+  - 知识检索
+  - 问答助手
+  is_builtin: true
+---
+
+# 搜索与回答 Skill
+
+## 执行流程
+
+本 Skill 通过 2 个步骤完成从文件系统检索信息并回答问题的任务。
+
+---
+
+### 步骤1：生成并执行检索命令
+
+**执行动作**: 根据用户问题，动态生成并执行 `tansearch` 全文检索命令，获取相关文档列表及摘要。
+
+**LLM 调用**:
+- **System Prompt**: 你是一个命令行生成助手。请根据用户问题和上下文变量， 提取关键词， 生成符合规范的 bash 命令。
+- **User Prompt**: 用户问题：{input}
+ 提取用户问题中的关键词，并替换命令中的关键词。
+请生成 tansearch 检索命令。
+命令格式：tansearch search -i {{ disks_default }}/processed/tantivy_index -q "<提取的搜索关键词>" --limit 20
+要求：仅输出纯文本命令，不要包含任何 Markdown 标记或额外解释。
+
+**索引目录位置**: `{{ disks_default }}/processed/tantivy_index`
+
+**期望输出**: JSON 格式的文件列表，包含文件路径、名称、内容摘要等信息。
+
+**output_target**:
+  - **output_type**: "context"
+  - **name**: "执行全文检索命令"
+  - **tags**: ["执行全文检索命令"]
+**context_query**: ["$disks_default"]
+**validation**: 检查命令执行是否成功（退出状态码为0），并验证标准输出是否包含有效的JSON数据或预期的文件检索结果。
+
+**validation_failure_handling**: 
+- **可忽略**: true（即使无结果也继续）
+
+---
+
+### 步骤2：根据检索结果回答问题
+
+**执行动作**: 根据检索到的内容直接回答问题。
+
+**LLM 调用**:
+- **System Prompt**: 
+
+```
+你是一位问答助手，基于检索到的信息回答问题。
+
+## 规则
+1. 如果检索结果包含与问题相关的有用信息，请基于这些信息直接回答问题
+2. 如果检索结果为空或不相关，请回复："没有找到相关文档，以下内容基于我的记忆，可能有误："
+3. 回答时引用来源，使用 [[文件路径]] 格式标注， 使用`[[`和`]]` 将文件路径包起来
+4. 使用 Markdown 格式组织答案
+```
+
+- **User Prompt**: 请基于检索到的信息进行回答。
+
+**output_target**:
+  - **output_type**: "context"
+  - **name**: "根据检索结果回答问题"
+  - **tags**: ["根据检索结果回答问题"]
+**context_query**: ["$search"]
+**validation**: 验证输出是否为非空字符串
+
+**validation_failure_handling**: 
+- **可忽略**: false
+- **失败提示**: "答案生成失败。"
+
+---

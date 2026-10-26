@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/actforce-logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ActForce</title>
+  </head>
+  <body>
+    <script>
+      // Inline polyfills — must run before any ESM module (old-browser support)
+      if (!Object.hasOwn) Object.hasOwn = function (o, p) { return Object.prototype.hasOwnProperty.call(o, p) }
+      if (typeof globalThis === 'undefined') (function () { window.globalThis = window })()
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+# Rust
+/target/
+**/target/
+
+# Node
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Runtime data
+/data/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo

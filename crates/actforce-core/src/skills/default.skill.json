@@ -1,0 +1,62 @@
+{
+  "id": "sk_default",
+  "name": "默认助手",
+  "description": "提供基本信息，列出可用的基本技能，支持简单对话交互。",
+  "is_enabled": true,
+  "program": null,
+  "extra_json": {
+    "icon": "MessageSquare",
+    "category": "基础功能",
+    "tags": [
+      "默认助手",
+      "技能导航",
+      "对话交互"
+    ],
+    "is_builtin": true
+  },
+  "generated_json": {
+    "steps_plan": [
+      {
+        "step_name": "默认助手问答处理",
+        "step_type": "answer",
+        "action": "根据识别的用户意图执行相应操作，结合上下文中的内置技能列表生成回复",
+        "llm_prompt": {
+          "system": [
+            "你是一个智能助手，负责帮助用户了解和使用系统提供的各项技能。",
+            "",
+            "系统会通过上下文提供当前所有可用内置技能列表，请参考这些技能信息来回答用户。",
+            "",
+            "## 任务说明",
+            "",
+            "根据用户的问题或需求，提供合适的响应：",
+            "",
+            "### 1. 当用户询问可用技能时",
+            "- 根据上下文中的技能列表，列出所有可用技能",
+            "- 简要说明每个技能的功能",
+            "- 根据用户需求推荐合适的技能",
+            "",
+            "### 2. 当用户选择使用某项技能时",
+            "- 确认技能名称",
+            "- 说明该技能需要的输入信息",
+            "- 引导用户提供必要的数据或文件",
+            "",
+            "### 3. 当用户进行简单对话时",
+            "- 自然、友好地回应",
+            "- 如果问题超出能力范围，引导用户使用相关技能"
+          ],
+          "user": "{input}"
+        },
+        "context_query": [
+          "$builtin_skills"
+        ],
+        "validation": "验证输出是否为非空字符串",
+        "validation_failure_handling": {
+          "can_ignore": false,
+          "fail_message": "助手响应生成失败，请重试。"
+        }
+      }
+    ],
+    "total_steps": 1
+  },
+  "source_file": "default.md"
+}

@@ -1,0 +1,188 @@
+{
+  "id": "sk_excel_query",
+  "name": "Excel数据查询分析",
+  "description": "接受用户上传的Excel/CSV文件，根据用户提出的问题，智能生成SQL查询或qsv数据处理命令，执行后返回查询结果。支持多文件关联查询、统计分析、数据筛选等操作。",
+  "is_enabled": true,
+  "program": null,
+  "extra_json": {
+    "icon": "Table2",
+    "category": "数据分析",
+    "tags": [
+      "Excel",
+      "CSV",
+      "SQL查询",
+      "数据分析"
+    ],
+    "is_builtin": true
+  },
+  "generated_json": {
+    "steps_plan": [
+      {
+        "step_name": "文件探测与Schema提取",
+        "step_type": "file_process",
+        "params": {
+          "file_paths": "$attachments",
+          "skip_if_none": false
+        },
+        "action": "检测用户上传的文件类型（Excel/CSV），将Excel文件转换为CSV，提取每个文件的列名（headers）、行数（count）、基本统计信息（stats），输出结构化的Schema描述供后续步骤使用。",
+        "llm_prompt": {
+          "system": [
+            "你是一个数据处理助手，负责分析用户上传的数据文件并提取其结构信息。",
+            "",
+            "## 任务说明",
+            "对于每个上传的文件，你需要：",
+            "1. 判断文件类型（.xlsx/.xls → Excel，.csv → CSV）",
+            "2. 对Excel文件，先生成转换命令：`qsv excel <file_path> -o <output_csv_path>`",
+            "3. 对CSV文件（或已转换的CSV），生成以下探测命令：",
+            "   - `qsv headers <csv_path>` 获取列名",
+            "   - `qsv count <csv_path>` 获取行数",
+            "   - `qsv stats <csv_path> --everything` 获取详细统计",
+            "   - `qsv frequency <csv_path> --limit 5` 获取频率分布（可选）",
+            "   - `qsv sniff <csv_path>` 快速嗅探元数据",
+            "",
+            "## 输出格式",
+            "为每个文件输出一段描述，包含：",
+            "- 文件名",
+            "- 文件路径（CSV格式的路径，用于后续SQL查询）",
+            "- 列名列表（含推测的数据类型）",
+            "- 行数",
+            "- 关键字段的统计摘要（如数值字段的min/max/mean，文本字段的非空数等）",
+            "",
+            "## 注意",
+            "- Excel多sheet的情况：使用 `qsv excel <file> --sheet <name>` 分别处理",
+            "- 列名中包含空格或特殊字符时，在SQL中需用双引号括起来",
+            "- 输出纯文本描述，不要包含Markdown代码块标记"
+          ],
+          "user": "请分析上传的文件，提取Schema信息。"
+        },
+        "context_query": [],
+        "validation": "检查是否成功提取了至少一个文件的Schema信息（列名非空、行数>0）",
+        "validation_failure_handling": {
+          "can_ignore": false,
+          "fail_message": "文件解析失败，无法提取数据结构信息。请确认上传的文件为有效的Excel或CSV格式，且包含数据行。"
+        },
+        "output_target": {
+          "output_type": "context",
+          "name": "文件Schema信息",
+          "tags": [
+            "file_schema",
+            "csv_info"
+          ]
+        }
+      },
+      {
+        "step_name": "生成并执行查询命令",
+        "step_type": "generate_command",
+        "action": "根据用户问题和文件Schema信息，生成一条或多条qsv命令（SQL查询或其他qsv子命令）来回答用户问题，并执行这些命令。",
+        "llm_prompt": {
+          "system": [
+            "你是一个数据分析SQL专家，负责根据用户的自然语言问题和数据文件的Schema信息，生成精确的qsv命令来查询和分析数据。",
+            "",
+            "## 可用工具",
+            "你只能使用以下qsv命令（均在系统白名单中，可直接执行）：",
+            "",
+            "### 1. SQL查询（最常用）",
+            "格式：`qsv sqlp <file1.csv> [file2.csv ...] '<SQL>'`",
+            "- SQL方言为PostgreSQL兼容的Polars SQL",
+            "- 多个文件可关联查询，用文件名作为表名",
+            "- 列名含空格或特殊字符时用双引号括起来：`\"列 名\"`",
+            "- 支持：JOIN、GROUP BY、ORDER BY、HAVING、子查询、UNION、聚合函数等",
+            "- 示例：",
+            "  - `qsv sqlp sales.csv 'SELECT product, SUM(amount) as total FROM sales GROUP BY product ORDER BY total DESC LIMIT 10'`",
+            "  - `qsv sqlp orders.csv customers.csv 'SELECT c.name, COUNT(o.id) as order_count FROM orders o JOIN customers c ON o.customer_id = c.id GROUP BY c.name'`",
+            "",
+            "### 2. 统计信息",
+            "- `qsv stats <file.csv> --everything` 详细统计",
+            "- `qsv frequency <file.csv> --select <column>` 频率分布",
+            "- `qsv count <file.csv>` 行数统计",
+            "",
+            "### 3. 数据操作",
+            "- `qsv select <columns> <file.csv>` 选择列",
+            "- `qsv search <regex> <file.csv>` 正则搜索",
+            "- `qsv sort <file.csv> -s <column>` 排序",
+            "- `qsv slice <file.csv> -s <start> -l <len>` 切片",
+            "- `qsv join <col1> <file1.csv> <col2> <file2.csv>` 文件关联",
+            "- `qsv sample <count> <file.csv>` 随机抽样",
+            "- `qsv dedup <file.csv>` 去重",
+            "",
+            "### 4. 输出选项",
+            "- `--output <path>` 指定输出文件路径",
+            "- `--format xlsx` 输出为Excel格式",
+            "- `--format json` 输出为JSON格式",
+            "",
+            "## 生成规则",
+            "1. 仔细分析用户问题，确定需要查询哪些文件、哪些字段",
+            "2. 优先使用 `qsv sqlp` 进行查询，它功能最强大",
+            "3. 如果问题涉及多个文件的关联，使用多文件SQL查询",
+            "4. 如果问题只需要简单统计，可用对应的qsv子命令",
+            "5. 如果用户的问题需要多步计算，可以生成多条命令",
+            "6. 对于大数据量的结果，默认加 `LIMIT 100` 除非用户明确要求全部结果",
+            "7. 如果需要输出为文件（如Excel），添加 `--output` 和 `--format` 参数",
+            "",
+            "## 重要约束",
+            "- 只输出纯命令文本，不要包含 Markdown 代码块标记（```）",
+            "- 每条命令独占一行",
+            "- 命令中的文件路径必须使用前面Schema中提取到的CSV路径",
+            "- SQL字符串用单引号包裹",
+            "- 如果SQL内部需要字符串字面量，使用两个单引号（''）或美元符号引用（$$）"
+          ],
+          "user": "请根据文件Schema和用户问题，生成qsv查询命令。"
+        },
+        "context_query": [
+          "file_schema",
+          "csv_info"
+        ],
+        "validation": "检查命令执行是否成功（退出状态码为0）；验证标准输出是否包含有效的查询结果数据",
+        "validation_failure_handling": {
+          "can_ignore": false,
+          "fail_message": "查询执行失败，请检查SQL语法是否正确，或查询的列名是否存在于文件中。如果问题较复杂，可以尝试拆分为多个简单问题。"
+        },
+        "output_target": {
+          "output_type": "context",
+          "name": "查询执行结果",
+          "tags": [
+            "query_result"
+          ]
+        }
+      },
+      {
+        "step_name": "结果解读与回答生成",
+        "step_type": "answer",
+        "action": "基于查询执行结果，结合用户原始问题，生成清晰的数据分析回答。如果结果量较大，提供关键摘要并指引用户查看详细数据。",
+        "llm_prompt": {
+          "system": [
+            "你是一个数据分析报告助手。请根据查询结果，用清晰易懂的方式回答用户的问题。",
+            "",
+            "## 回答规范",
+            "1. 先用一句话直接回答用户的核心问题",
+            "2. 如果结果包含数值数据，用表格或列表形式清晰展示",
+            "3. 如果结果包含多行数据，提供关键摘要（如总计、平均、最大/最小等）",
+            "4. 如果查询生成了输出文件（如Excel），告知用户文件路径并说明可以下载查看",
+            "5. 如果查询结果不理想或为空，解释可能原因并建议调整查询方式",
+            "6. 使用Markdown格式组织回答，确保可读性",
+            "7. 对于数值型结果，保留合理的小数位数",
+            "8. 如果涉及多个文件的关联结果，说明数据来源"
+          ],
+          "user": "请根据查询结果生成分析报告。"
+        },
+        "context_query": [
+          "query_result"
+        ],
+        "validation": "验证输出是否为非空字符串，且内容与用户问题相关",
+        "validation_failure_handling": {
+          "can_ignore": false,
+          "fail_message": "回答生成失败，请重试或换一种方式提问。"
+        },
+        "output_target": {
+          "output_type": "context",
+          "name": "最终回答",
+          "tags": [
+            "final_answer"
+          ]
+        }
+      }
+    ],
+    "total_steps": 3
+  },
+  "source_file": "excel_query.md"
+}
