@@ -16,6 +16,7 @@ members = [
     "crates/actforce-core",
     "crates/actforce",
 ]
+exclude = ["thecli"]
 
 [workspace.package]
 version = "0.1.0"

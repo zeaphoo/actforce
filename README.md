@@ -32,6 +32,7 @@ web/               公开 Web UI（AppShell + Entitlements）
 packages/          共享前端包（chat-ui / file-manager）
 desktop/           Electron 桌面壳
 distribution/      Docker / 安装器发行文件
+thecli/            独立 workspace（CLI 工具集，自带 Cargo.toml/Cargo.lock）
 ```
 
 不包含 `actforce-mega`、`actforce-super`、`super-license`、`agent-analysis`。
@@ -74,6 +75,20 @@ pnpm install
 pnpm dev:actforce
 pnpm build:actforce
 ```
+
+### thecli
+
+`thecli` 是独立 workspace（根 workspace 通过 `exclude` 排除），保留自己的 `Cargo.toml` 和 `Cargo.lock`：
+
+```bash
+cd thecli
+cargo build --release
+
+# 或从仓库根目录
+cargo build --manifest-path thecli/Cargo.toml --release
+```
+
+产物：`thecli/target/release/thecli`。Python 版本已不再维护。
 
 ### 发行
 
