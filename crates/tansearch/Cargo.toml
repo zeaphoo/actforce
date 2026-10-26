@@ -1,0 +1,30 @@
+[package]
+name = "tansearch"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "tansearch"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+ansi_term = "0.12"
+clap = "4"
+crossbeam-channel = "0.5.8"
+env_logger = "0.10"
+iron = "0.6"
+log = "0.4"
+mount = "0.4"
+persistent = "0.4"
+serde_derive = "1.0"
+staticfile = "0.5"
+time = "0.3"
+tantivy = "0.25"
+tantivy-jieba = "0.18.0"
+urlencoded = "0.6"

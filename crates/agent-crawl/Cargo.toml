@@ -1,0 +1,38 @@
+[package]
+name = "agent-crawl"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "The fastest web crawler CLI written in Rust."
+keywords = ["crawler", "spider", "agent-crawl"]
+
+[[bin]]
+name = "agent-crawl"
+path = "src/main.rs"
+doc = false
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+env_logger = "0.11"
+serde_json = { workspace = true }
+percent-encoding = "2"
+unicode-normalization = "0.1"
+tokio = { workspace = true }
+dirs = { workspace = true }
+url = "2"
+
+[dependencies.spider]
+version = "2"
+features = ["tokio_io_std", "sync", "serde", "cookies"]
+
+[dependencies.spider_transformations]
+version = "2"
+
+[features]
+default = ["status_code"]
+status_code = []
+chrome = ["spider/chrome"]
+headers = ["spider/headers"]
+time = ["spider/time"]
+remote_addr = ["spider/remote_addr"]

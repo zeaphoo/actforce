@@ -1,0 +1,19 @@
+{
+  "id": "actforce",
+  "name": "ActForce",
+  "productName": "ActForce",
+  "description": "ActForce Desktop",
+  "defaultUrl": "http://localhost:6173",
+  "theme": {
+    "backgroundColor": "#1a1a1a",
+    "titlebarColor": "#1a1a1a",
+    "textColor": "#e5e5e5",
+    "borderColor": "#333"
+  },
+  "window": {
+    "width": 1200,
+    "height": 800,
+    "minWidth": 800,
+    "minHeight": 600
+  }
+}

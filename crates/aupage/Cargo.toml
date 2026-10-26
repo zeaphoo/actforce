@@ -1,0 +1,29 @@
+[package]
+name = "aupage"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "aupage"
+path = "src/main.rs"
+
+[lib]
+name = "aupage"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+clap = { version = "4", features = ["derive"] }
+anyhow = "1.0"
+chrono = "0.4"
+image = { version = "0.25", package = "image" }
+docx-rs = "0.4"
+charton = { version = "0.5", features = ["png"] }
+# printpdf = { version = "0.9", features = ["images"] }  # 移除：未使用且与 markdown2pdf 的 azul-layout 依赖冲突
+ironpress = "1.4.3"
+html2pdf = "0.8"
+headless_chrome = "1.0"
+libc = "0.2"

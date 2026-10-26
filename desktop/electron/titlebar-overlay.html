@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    :root {
+      --titlebar-bg: #1a1a1a;
+      --titlebar-text: #e5e5e5;
+      --titlebar-border: #333;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      overflow: hidden;
+      background: var(--titlebar-bg);
+    }
+    #titlebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 42px;
+      background: var(--titlebar-bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--titlebar-border);
+      -webkit-app-region: drag;
+    }
+    .title {
+      flex: 1;
+      padding-left: 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--titlebar-text);
+      -webkit-app-region: drag;
+      user-select: none;
+    }
+    .controls {
+      display: flex;
+      height: 100%;
+      -webkit-app-region: no-drag;
+    }
+    .btn {
+      width: 46px;
+      height: 100%;
+      border: none;
+      background: transparent;
+      color: var(--titlebar-text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.15s;
+    }
+    .btn:hover { background-color: rgba(255, 255, 255, 0.1); color: #fff; }
+    .btn.close:hover { background-color: #e81123; }
+  </style>
+</head>
+<body>
+  <div id="titlebar">
+    <div class="title" id="app-title">Loading...</div>
+    <div class="controls">
+      <button class="btn" id="minimize" title="最小化">
+        <svg width="12" height="12" viewBox="0 0 12 12">
+          <rect x="1" y="5.5" width="10" height="1" fill="currentColor"/>
+        </svg>
+      </button>
+      <button class="btn" id="maximize" title="最大化">
+        <svg width="12" height="12" viewBox="0 0 12 12">
+          <rect x="1.5" y="1.5" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </button>
+      <button class="btn close" id="close" title="关闭">
+        <svg width="12" height="12" viewBox="0 0 12 12">
+          <path d="M1.5 1.5 L10.5 10.5 M10.5 1.5 L1.5 10.5" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <script>
+    const { ipcRenderer } = require('electron');
+    document.getElementById('minimize').onclick = () => ipcRenderer.send('window-minimize');
+    document.getElementById('maximize').onclick = () => ipcRenderer.send('window-maximize');
+    document.getElementById('close').onclick = () => ipcRenderer.send('window-close');
+
+    // Load app config and apply theme
+    ipcRenderer.invoke('get-app-config').then((config) => {
+      document.getElementById('app-title').textContent = config.productName;
+      document.documentElement.style.setProperty('--titlebar-bg', config.theme.titlebarColor);
+      document.documentElement.style.setProperty('--titlebar-text', config.theme.textColor);
+      document.documentElement.style.setProperty('--titlebar-border', config.theme.borderColor);
+      document.body.style.background = config.theme.titlebarColor;
+    });
+  </script>
+</body>
+</html>

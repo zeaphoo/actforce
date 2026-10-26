@@ -1,0 +1,45 @@
+[package]
+name = "ofd-file"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "OFD (Open Fixed-layout Document, GB/T 33190-2016) parser and converter to Markdown / PDF / PNG."
+
+[lib]
+name = "ofd_file"
+path = "src/lib.rs"
+
+[[bin]]
+name = "ofd-file"
+path = "src/bin/ofd_file.rs"
+required-features = ["cli"]
+
+[features]
+default = ["pdf", "render-cpu", "cli"]
+# Vector PDF export via krilla (pure Rust).
+pdf = ["dep:krilla"]
+# CPU-side raster PNG export via vello_cpu (pure Rust).
+render-cpu = ["dep:vello_cpu"]
+cli = ["dep:clap", "dep:anyhow"]
+
+[dependencies]
+thiserror = { workspace = true }
+serde = { workspace = true }
+serde-xml-rs = "0.6"
+quick-xml = "0.36"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+log = "0.4"
+
+# PDF export
+krilla = { version = "0.7", optional = true, default-features = false, features = ["raster-images", "simple-text"] }
+
+# CPU PNG rendering. kurbo/peniko are re-exported by vello_cpu.
+vello_cpu = { version = "0.0.7", optional = true }
+
+# CLI
+clap = { version = "4", optional = true, features = ["derive"] }
+anyhow = { workspace = true, optional = true }
+
+[dev-dependencies]
+anyhow = { workspace = true }

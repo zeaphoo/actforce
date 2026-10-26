@@ -3,8 +3,16 @@ resolver = "2"
 members = [
     "crates/common",
     "crates/agent-core",
+    "crates/agent-crawl",
+    "crates/agent-doc",
+    "crates/agent-gui",
+    "crates/agent-image",
+    "crates/aupage",
     "crates/file-service",
     "crates/entitlement",
+    "crates/ofd-file",
+    "crates/tansearch",
+    "crates/teamchat",
     "crates/actforce-core",
     "crates/actforce",
 ]

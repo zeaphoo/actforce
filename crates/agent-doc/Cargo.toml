@@ -1,0 +1,37 @@
+[package]
+name = "agent-doc"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "agent-doc"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+clap = { version = "4", features = ["derive"] }
+chmlib = "1.0"
+kreuzberg = { version = "4", features = ["excel", "office", "html", "archives"] }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+csv = "1"
+calamine = "0.26"
+pdf-extract = "0.8"
+pdf_oxide = "0.3"
+zip = "2"
+quick-xml = "0.36"
+anytomd = "1"
+docx-rs = "0.4"
+pulldown-cmark = "0.12"
+pulldown-cmark-to-cmark = "11"
+regex = "1"
+url = "2"
+base64 = "0.22"
+ofd-file = { path = "../../crates/ofd-file", default-features = false }
+html-to-markdown-rs = "3"
+markdown2pdf = "1.4"

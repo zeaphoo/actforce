@@ -1,0 +1,17 @@
+{
+  "name": "agent-desktop",
+  "version": "0.1.0",
+  "description": "Electron wrapper for web application",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "NODE_ENV=development electron .",
+    "dev:actforce": "APP_CONFIG=actforce NODE_ENV=development electron .",
+    "build": "node scripts/build-app.js",
+    "build:actforce": "node scripts/build-app.js --config=actforce"
+  },
+  "devDependencies": {
+    "electron": "^34.0.0",
+    "electron-builder": "^25.1.8"
+  }
+}

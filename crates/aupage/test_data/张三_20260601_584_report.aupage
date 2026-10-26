@@ -1,0 +1,1382 @@
+{
+  "version": "1.0",
+  "title": "张三 交易流水分析报告",
+  "meta": {
+    "generated_at": "2026-06-01T04:07:59Z",
+    "data_source": "lfc.jsonl",
+    "page_width": 794,
+    "margin": {
+      "top": 72,
+      "right": 72,
+      "bottom": 72,
+      "left": 72
+    }
+  },
+  "elements": [
+    {
+      "elements": [
+        {
+          "content": "一、汇总统计",
+          "level": 1,
+          "type": "heading"
+        },
+        {
+          "cards": [
+            {
+              "label": "总收入",
+              "value": "1756708.35"
+            },
+            {
+              "label": "总支出",
+              "value": "1951045.16"
+            },
+            {
+              "label": "净收入",
+              "value": "-194336.81"
+            },
+            {
+              "label": "交易笔数",
+              "value": "686"
+            }
+          ],
+          "type": "summary_cards"
+        },
+        {
+          "columns": [
+            {
+              "key": "label",
+              "label": "类别"
+            },
+            {
+              "align": "right",
+              "key": "income",
+              "label": "收入(元)"
+            },
+            {
+              "align": "right",
+              "key": "expense",
+              "label": "支出(元)"
+            },
+            {
+              "align": "center",
+              "key": "count",
+              "label": "笔数"
+            }
+          ],
+          "rows": [
+            {
+              "count": "686",
+              "expense": "1951045.16",
+              "income": "1756708.35",
+              "label": "总流水"
+            },
+            {
+              "count": "0",
+              "expense": "0.00",
+              "income": "0.00",
+              "label": "剔除项"
+            },
+            {
+              "count": "686",
+              "expense": "1951045.16",
+              "income": "1756708.35",
+              "label": "净流水"
+            }
+          ],
+          "title": "汇总明细",
+          "type": "table"
+        }
+      ],
+      "id": "summary",
+      "title": "汇总统计",
+      "type": "section"
+    },
+    {
+      "elements": [
+        {
+          "content": "二、月度趋势",
+          "level": 1,
+          "type": "heading"
+        },
+        {
+          "chart_type": "pie",
+          "data": {
+            "categories": [
+              "收入",
+              "支出"
+            ],
+            "series": [
+              {
+                "name": "金额",
+                "values": [
+                  1756708.35,
+                  1951045.16
+                ]
+              }
+            ]
+          },
+          "title": "总收支占比",
+          "type": "chart"
+        },
+        {
+          "chart_type": "line",
+          "config": {
+            "x_axis_name": "月份",
+            "y_axis_name": "金额(元)"
+          },
+          "data": {
+            "categories": [
+              "2025-01",
+              "2025-02",
+              "2025-03",
+              "2025-04",
+              "2025-05",
+              "2025-06",
+              "2025-07",
+              "2025-08",
+              "2025-09",
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01"
+            ],
+            "series": [
+              {
+                "name": "收入",
+                "smooth": true,
+                "values": [
+                  8571.77,
+                  320056.14,
+                  67798.39,
+                  55269.2,
+                  13719.56,
+                  42078.14,
+                  1137054.1,
+                  12874.18,
+                  14952.33,
+                  6196.57,
+                  47146.06,
+                  5977.01,
+                  25014.9
+                ]
+              },
+              {
+                "name": "支出",
+                "smooth": true,
+                "values": [
+                  17540.11,
+                  325150.16,
+                  66569.34,
+                  47969.3,
+                  18734.57,
+                  45796.75,
+                  1223883.78,
+                  105950.94,
+                  12848.13,
+                  8378.18,
+                  46706.99,
+                  6503.37,
+                  25013.54
+                ]
+              }
+            ]
+          },
+          "title": "月度收入与支出趋势",
+          "type": "chart"
+        },
+        {
+          "columns": [
+            {
+              "key": "month",
+              "label": "月份"
+            },
+            {
+              "align": "right",
+              "key": "income",
+              "label": "收入(元)"
+            },
+            {
+              "align": "right",
+              "key": "expense",
+              "label": "支出(元)"
+            },
+            {
+              "align": "right",
+              "key": "net_flow",
+              "label": "净流量(元)"
+            },
+            {
+              "align": "center",
+              "key": "income_count",
+              "label": "收入笔数"
+            },
+            {
+              "align": "center",
+              "key": "expense_count",
+              "label": "支出笔数"
+            }
+          ],
+          "rows": [
+            {
+              "expense": "17540.11",
+              "expense_count": "62",
+              "income": "8571.77",
+              "income_count": "2",
+              "month": "2025-01",
+              "net_flow": "-8968.34"
+            },
+            {
+              "expense": "325150.16",
+              "expense_count": "61",
+              "income": "320056.14",
+              "income_count": "11",
+              "month": "2025-02",
+              "net_flow": "-5094.02"
+            },
+            {
+              "expense": "66569.34",
+              "expense_count": "67",
+              "income": "67798.39",
+              "income_count": "12",
+              "month": "2025-03",
+              "net_flow": "1229.05"
+            },
+            {
+              "expense": "47969.30",
+              "expense_count": "50",
+              "income": "55269.20",
+              "income_count": "14",
+              "month": "2025-04",
+              "net_flow": "7299.90"
+            },
+            {
+              "expense": "18734.57",
+              "expense_count": "60",
+              "income": "13719.56",
+              "income_count": "4",
+              "month": "2025-05",
+              "net_flow": "-5015.01"
+            },
+            {
+              "expense": "45796.75",
+              "expense_count": "63",
+              "income": "42078.14",
+              "income_count": "5",
+              "month": "2025-06",
+              "net_flow": "-3718.61"
+            },
+            {
+              "expense": "1223883.78",
+              "expense_count": "60",
+              "income": "1137054.10",
+              "income_count": "21",
+              "month": "2025-07",
+              "net_flow": "-86829.68"
+            },
+            {
+              "expense": "105950.94",
+              "expense_count": "25",
+              "income": "12874.18",
+              "income_count": "2",
+              "month": "2025-08",
+              "net_flow": "-93076.76"
+            },
+            {
+              "expense": "12848.13",
+              "expense_count": "39",
+              "income": "14952.33",
+              "income_count": "9",
+              "month": "2025-09",
+              "net_flow": "2104.20"
+            },
+            {
+              "expense": "8378.18",
+              "expense_count": "44",
+              "income": "6196.57",
+              "income_count": "7",
+              "month": "2025-10",
+              "net_flow": "-2181.61"
+            },
+            {
+              "expense": "46706.99",
+              "expense_count": "40",
+              "income": "47146.06",
+              "income_count": "5",
+              "month": "2025-11",
+              "net_flow": "439.07"
+            },
+            {
+              "expense": "6503.37",
+              "expense_count": "13",
+              "income": "5977.01",
+              "income_count": "2",
+              "month": "2025-12",
+              "net_flow": "-526.36"
+            },
+            {
+              "expense": "25013.54",
+              "expense_count": "5",
+              "income": "25014.90",
+              "income_count": "3",
+              "month": "2026-01",
+              "net_flow": "1.36"
+            }
+          ],
+          "title": "月度明细",
+          "type": "table"
+        },
+        {
+          "chart_type": "line",
+          "config": {
+            "x_axis_name": "月份",
+            "y_axis_name": "余额(元)"
+          },
+          "data": {
+            "categories": [
+              "2025-01",
+              "2025-02",
+              "2025-03",
+              "2025-04",
+              "2025-05",
+              "2025-06",
+              "2025-07",
+              "2025-08",
+              "2025-09",
+              "2025-10",
+              "2025-11",
+              "2025-12",
+              "2026-01"
+            ],
+            "series": [
+              {
+                "name": "余额",
+                "smooth": true,
+                "values": [
+                  5387.3,
+                  293.28,
+                  1522.33,
+                  8822.23,
+                  3807.22,
+                  88.61,
+                  93258.93,
+                  182.17,
+                  2286.37,
+                  104.76,
+                  543.83,
+                  17.47,
+                  18.83
+                ]
+              }
+            ]
+          },
+          "title": "月度余额变化趋势",
+          "type": "chart"
+        }
+      ],
+      "id": "trends",
+      "title": "月度趋势",
+      "type": "section"
+    },
+    {
+      "elements": [
+        {
+          "content": "三、收入区间分析",
+          "level": 1,
+          "type": "heading"
+        },
+        {
+          "chart_type": "bar",
+          "data": {
+            "categories": [
+              "0-111700",
+              "111700-223400",
+              "223400-335100",
+              "335100-446800",
+              "446800-558500",
+              "558500-670200"
+            ],
+            "series": [
+              {
+                "chart_type": "bar",
+                "name": "金额",
+                "values": [
+                  908008.35,
+                  178700.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  670000.0
+                ],
+                "y_axis_index": 0,
+                "y_axis_name": "金额(元)"
+              },
+              {
+                "chart_type": "line",
+                "name": "笔数",
+                "smooth": true,
+                "values": [
+                  95,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "y_axis_index": 1,
+                "y_axis_name": "笔数"
+              }
+            ]
+          },
+          "title": "收入区间分布",
+          "type": "chart"
+        },
+        {
+          "columns": [
+            {
+              "key": "range",
+              "label": "金额区间"
+            },
+            {
+              "align": "center",
+              "key": "count",
+              "label": "交易笔数"
+            },
+            {
+              "align": "right",
+              "key": "amount",
+              "label": "总金额(元)"
+            },
+            {
+              "align": "center",
+              "key": "pct",
+              "label": "占比"
+            }
+          ],
+          "rows": [
+            {
+              "amount": "908008.35",
+              "count": "95",
+              "pct": "97.9%",
+              "range": "0-111700"
+            },
+            {
+              "amount": "178700.00",
+              "count": "1",
+              "pct": "1.0%",
+              "range": "111700-223400"
+            },
+            {
+              "amount": "0.00",
+              "count": "0",
+              "pct": "0.0%",
+              "range": "223400-335100"
+            },
+            {
+              "amount": "0.00",
+              "count": "0",
+              "pct": "0.0%",
+              "range": "335100-446800"
+            },
+            {
+              "amount": "0.00",
+              "count": "0",
+              "pct": "0.0%",
+              "range": "446800-558500"
+            },
+            {
+              "amount": "670000.00",
+              "count": "1",
+              "pct": "1.0%",
+              "range": "558500-670200"
+            }
+          ],
+          "title": "收入区间明细",
+          "type": "table"
+        }
+      ],
+      "id": "income_range",
+      "title": "收入区间分析",
+      "type": "section"
+    },
+    {
+      "elements": [
+        {
+          "content": "四、支出区间分析",
+          "level": 1,
+          "type": "heading"
+        },
+        {
+          "chart_type": "bar",
+          "data": {
+            "categories": [
+              "0-65400",
+              "65400-130800",
+              "130800-196200",
+              "196200-261600",
+              "261600-327000",
+              "327000-392400"
+            ],
+            "series": [
+              {
+                "chart_type": "bar",
+                "name": "金额",
+                "values": [
+                  718910.58,
+                  363000.0,
+                  180000.0,
+                  0.0,
+                  297000.0,
+                  392134.58
+                ],
+                "y_axis_index": 0,
+                "y_axis_name": "金额(元)"
+              },
+              {
+                "chart_type": "line",
+                "name": "笔数",
+                "smooth": true,
+                "values": [
+                  582,
+                  4,
+                  1,
+                  0,
+                  1,
+                  1
+                ],
+                "y_axis_index": 1,
+                "y_axis_name": "笔数"
+              }
+            ]
+          },
+          "title": "支出区间分布",
+          "type": "chart"
+        },
+        {
+          "columns": [
+            {
+              "key": "range",
+              "label": "金额区间"
+            },
+            {
+              "align": "center",
+              "key": "count",
+              "label": "交易笔数"
+            },
+            {
+              "align": "right",
+              "key": "amount",
+              "label": "总金额(元)"
+            },
+            {
+              "align": "center",
+              "key": "pct",
+              "label": "占比"
+            }
+          ],
+          "rows": [
+            {
+              "amount": "718910.58",
+              "count": "582",
+              "pct": "98.8%",
+              "range": "0-65400"
+            },
+            {
+              "amount": "363000.00",
+              "count": "4",
+              "pct": "0.7%",
+              "range": "65400-130800"
+            },
+            {
+              "amount": "180000.00",
+              "count": "1",
+              "pct": "0.2%",
+              "range": "130800-196200"
+            },
+            {
+              "amount": "0.00",
+              "count": "0",
+              "pct": "0.0%",
+              "range": "196200-261600"
+            },
+            {
+              "amount": "297000.00",
+              "count": "1",
+              "pct": "0.2%",
+              "range": "261600-327000"
+            },
+            {
+              "amount": "392134.58",
+              "count": "1",
+              "pct": "0.2%",
+              "range": "327000-392400"
+            }
+          ],
+          "title": "支出区间明细",
+          "type": "table"
+        }
+      ],
+      "id": "expense_range",
+      "title": "支出区间分析",
+      "type": "section"
+    },
+    {
+      "elements": [
+        {
+          "content": "五、交易时间分布",
+          "level": 1,
+          "type": "heading"
+        },
+        {
+          "chart_type": "pie",
+          "data": {
+            "categories": [
+              "00:00-04:00",
+              "04:00-08:00",
+              "08:00-12:00",
+              "12:00-16:00",
+              "16:00-20:00",
+              "20:00-24:00"
+            ],
+            "series": [
+              {
+                "name": "金额",
+                "values": [
+                  64525.11,
+                  11582.9,
+                  955035.34,
+                  1589446.99,
+                  890022.33,
+                  197140.84
+                ]
+              }
+            ]
+          },
+          "title": "各时段金额占比",
+          "type": "chart"
+        },
+        {
+          "columns": [
+            {
+              "key": "interval",
+              "label": "时间区间"
+            },
+            {
+              "align": "center",
+              "key": "count",
+              "label": "交易笔数"
+            },
+            {
+              "align": "right",
+              "key": "amount",
+              "label": "金额(元)"
+            },
+            {
+              "align": "right",
+              "key": "avg_amount",
+              "label": "平均金额(元)"
+            }
+          ],
+          "rows": [
+            {
+              "amount": "64525.11",
+              "avg_amount": "2805.44",
+              "count": "23",
+              "interval": "00:00-04:00"
+            },
+            {
+              "amount": "11582.90",
+              "avg_amount": "965.24",
+              "count": "12",
+              "interval": "04:00-08:00"
+            },
+            {
+              "amount": "955035.34",
+              "avg_amount": "5247.45",
+              "count": "182",
+              "interval": "08:00-12:00"
+            },
+            {
+              "amount": "1589446.99",
+              "avg_amount": "8638.30",
+              "count": "184",
+              "interval": "12:00-16:00"
+            },
+            {
+              "amount": "890022.33",
+              "avg_amount": "5460.26",
+              "count": "163",
+              "interval": "16:00-20:00"
+            },
+            {
+              "amount": "197140.84",
+              "avg_amount": "1615.91",
+              "count": "122",
+              "interval": "20:00-24:00"
+            }
+          ],
+          "title": "时段明细",
+          "type": "table"
+        }
+      ],
+      "id": "time_distribution",
+      "title": "交易时间分布",
+      "type": "section"
+    },
+    {
+      "elements": [
+        {
+          "content": "六、交易用途统计",
+          "level": 1,
+          "type": "heading"
+        },
+        {
+          "chart_type": "pie",
+          "data": {
+            "categories": [
+              "消费",
+              "其他",
+              "转账",
+              "还款",
+              "投资"
+            ],
+            "series": [
+              {
+                "name": "金额",
+                "values": [
+                  22423.1,
+                  161899.88,
+                  2970390.58,
+                  524839.95,
+                  28200.0
+                ]
+              }
+            ]
+          },
+          "title": "各用途金额占比",
+          "type": "chart"
+        },
+        {
+          "columns": [
+            {
+              "key": "usage",
+              "label": "用途"
+            },
+            {
+              "align": "center",
+              "key": "count",
+              "label": "笔数"
+            },
+            {
+              "align": "right",
+              "key": "total",
+              "label": "总金额"
+            },
+            {
+              "align": "right",
+              "key": "avg",
+              "label": "平均金额"
+            }
+          ],
+          "rows": [
+            {
+              "avg": "66.74",
+              "count": "336",
+              "total": "22423.10",
+              "usage": "消费"
+            },
+            {
+              "avg": "680.25",
+              "count": "238",
+              "total": "161899.88",
+              "usage": "其他"
+            },
+            {
+              "avg": "34142.42",
+              "count": "87",
+              "total": "2970390.58",
+              "usage": "转账"
+            },
+            {
+              "avg": "23856.36",
+              "count": "22",
+              "total": "524839.95",
+              "usage": "还款"
+            },
+            {
+              "avg": "9400.00",
+              "count": "3",
+              "total": "28200.00",
+              "usage": "投资"
+            }
+          ],
+          "title": "用途明细",
+          "type": "table"
+        }
+      ],
+      "id": "usage_stats",
+      "title": "交易用途统计",
+      "type": "section"
+    },
+    {
+      "elements": [
+        {
+          "content": "七、前十进出帐",
+          "level": 1,
+          "type": "heading"
+        },
+        {
+          "columns": [
+            {
+              "align": "center",
+              "key": "rank",
+              "label": "排名"
+            },
+            {
+              "key": "name",
+              "label": "对方户名"
+            },
+            {
+              "align": "right",
+              "key": "total",
+              "label": "总金额"
+            },
+            {
+              "align": "right",
+              "key": "avg",
+              "label": "平均金额"
+            },
+            {
+              "align": "center",
+              "key": "count",
+              "label": "笔数"
+            },
+            {
+              "key": "summary",
+              "label": "交易摘要"
+            }
+          ],
+          "rows": [
+            {
+              "avg": "385000.00",
+              "count": "2",
+              "name": "管凯丽",
+              "rank": 1,
+              "summary": "小额普通；跨行转账",
+              "total": "770000.00"
+            },
+            {
+              "avg": "42857.14",
+              "count": "7",
+              "name": "梁娜",
+              "rank": 2,
+              "summary": "跨行转账",
+              "total": "300000.00"
+            },
+            {
+              "avg": "13161.93",
+              "count": "20",
+              "name": "李法昌",
+              "rank": 3,
+              "summary": "跨行转账；银联入账",
+              "total": "263238.65"
+            },
+            {
+              "avg": "15267.84",
+              "count": "17",
+              "name": "山东星略物联科技有限公司",
+              "rank": 4,
+              "summary": "跨行转账；大额支付",
+              "total": "259553.25"
+            },
+            {
+              "avg": "60000.00",
+              "count": "1",
+              "name": "崔兴萍",
+              "rank": 5,
+              "summary": "跨行转账",
+              "total": "60000.00"
+            },
+            {
+              "avg": "37000.00",
+              "count": "1",
+              "name": "微众银行（贷款发放）",
+              "rank": 6,
+              "summary": "跨行转账",
+              "total": "37000.00"
+            },
+            {
+              "avg": "15000.00",
+              "count": "2",
+              "name": "周国兰",
+              "rank": 7,
+              "summary": "转账收入",
+              "total": "30000.00"
+            },
+            {
+              "avg": "19000.00",
+              "count": "1",
+              "name": "山东星纬智联信息科技有限公司",
+              "rank": 8,
+              "summary": "跨行转账",
+              "total": "19000.00"
+            },
+            {
+              "avg": "8400.00",
+              "count": "1",
+              "name": "济南大学",
+              "rank": 9,
+              "summary": "小额普通",
+              "total": "8400.00"
+            },
+            {
+              "avg": "3219.35",
+              "count": "1",
+              "name": "王晴晴6月份工资代发",
+              "rank": 10,
+              "summary": "跨行转账",
+              "total": "3219.35"
+            }
+          ],
+          "title": "前十进帐",
+          "type": "table"
+        },
+        {
+          "columns": [
+            {
+              "align": "center",
+              "key": "rank",
+              "label": "排名"
+            },
+            {
+              "key": "name",
+              "label": "对方户名"
+            },
+            {
+              "align": "right",
+              "key": "total",
+              "label": "总金额"
+            },
+            {
+              "align": "right",
+              "key": "avg",
+              "label": "平均金额"
+            },
+            {
+              "align": "center",
+              "key": "count",
+              "label": "笔数"
+            },
+            {
+              "key": "summary",
+              "label": "交易摘要"
+            }
+          ],
+          "rows": [
+            {
+              "avg": "47399.09",
+              "count": "32",
+              "name": "李法昌",
+              "rank": 1,
+              "summary": "跨行转账；冲正；贷款还款",
+              "total": "1516770.76"
+            },
+            {
+              "avg": "47000.00",
+              "count": "2",
+              "name": "崔兴萍",
+              "rank": 2,
+              "summary": "跨行转账",
+              "total": "94000.00"
+            },
+            {
+              "avg": "8969.91",
+              "count": "6",
+              "name": "(特约)招商银行信用卡还款",
+              "rank": 3,
+              "summary": "代收；无卡支付",
+              "total": "53819.47"
+            },
+            {
+              "avg": "42680.00",
+              "count": "1",
+              "name": "刘子文",
+              "rank": 4,
+              "summary": "跨行转账",
+              "total": "42680.00"
+            },
+            {
+              "avg": "40375.00",
+              "count": "1",
+              "name": "苏大龙",
+              "rank": 5,
+              "summary": "转账支出",
+              "total": "40375.00"
+            },
+            {
+              "avg": "37185.00",
+              "count": "1",
+              "name": "微粒贷",
+              "rank": 6,
+              "summary": "人行跨行付款",
+              "total": "37185.00"
+            },
+            {
+              "avg": "30000.00",
+              "count": "1",
+              "name": "刘宇",
+              "rank": 7,
+              "summary": "跨行转账",
+              "total": "30000.00"
+            },
+            {
+              "avg": "4840.00",
+              "count": "5",
+              "name": "山东星略物联科技有限公司",
+              "rank": 8,
+              "summary": "小额普通",
+              "total": "24200.00"
+            },
+            {
+              "avg": "20000.00",
+              "count": "1",
+              "name": "平安证券股份有限公司",
+              "rank": 9,
+              "summary": "银证转账",
+              "total": "20000.00"
+            },
+            {
+              "avg": "1090.56",
+              "count": "18",
+              "name": "财付通-微信转账",
+              "rank": 10,
+              "summary": "网上快捷支付",
+              "total": "19630.00"
+            }
+          ],
+          "title": "前十出帐",
+          "type": "table"
+        }
+      ],
+      "id": "counterparty",
+      "title": "前十进出帐",
+      "type": "section"
+    },
+    {
+      "elements": [
+        {
+          "content": "八、大额交易",
+          "level": 1,
+          "type": "heading"
+        },
+        {
+          "columns": [
+            {
+              "align": "center",
+              "key": "index",
+              "label": "序号"
+            },
+            {
+              "key": "date",
+              "label": "交易时间"
+            },
+            {
+              "align": "right",
+              "key": "amount",
+              "label": "金额"
+            },
+            {
+              "key": "name",
+              "label": "对方户名"
+            },
+            {
+              "key": "account",
+              "label": "对方账号"
+            },
+            {
+              "key": "summary",
+              "label": "摘要"
+            },
+            {
+              "align": "right",
+              "key": "balance",
+              "label": "余额"
+            }
+          ],
+          "rows": [
+            {
+              "account": "15424057550004379",
+              "amount": "670000.00",
+              "balance": "696560.32",
+              "date": "2025-07-30 18:34:12",
+              "index": 1,
+              "name": "管凯丽",
+              "summary": "小额普通"
+            },
+            {
+              "account": "224741714392",
+              "amount": "-392134.58",
+              "balance": "21607.74",
+              "date": "2025-07-26 08:00:35",
+              "index": 2,
+              "name": "李法昌",
+              "summary": "贷款还款"
+            },
+            {
+              "account": "6223200782765535",
+              "amount": "-297000.00",
+              "balance": "130578.93",
+              "date": "2025-07-31 13:53:11",
+              "index": 3,
+              "name": "李法昌",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6214835414406205",
+              "amount": "-180000.00",
+              "balance": "426405.33",
+              "date": "2025-07-31 13:40:39",
+              "index": 4,
+              "name": "李法昌",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6214835414406205",
+              "amount": "178700.00",
+              "balance": "371789.32",
+              "date": "2025-07-25 08:41:48",
+              "index": 5,
+              "name": "李法昌",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6214835654574837",
+              "amount": "100000.00",
+              "balance": "118339.33",
+              "date": "2025-07-23 14:57:45",
+              "index": 6,
+              "name": "管凯丽",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6217931770110890",
+              "amount": "-93000.00",
+              "balance": "241.31",
+              "date": "2025-08-01 15:24:37",
+              "index": 7,
+              "name": "李法昌",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6217931720939190",
+              "amount": "-90000.00",
+              "balance": "93258.93",
+              "date": "2025-07-31 14:01:53",
+              "index": 8,
+              "name": "李法昌",
+              "summary": "冲正"
+            },
+            {
+              "account": "6217931720939190",
+              "amount": "-90000.00",
+              "balance": "3258.93",
+              "date": "2025-07-31 14:01:52",
+              "index": 9,
+              "name": "李法昌",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6214855311244491",
+              "amount": "-90000.00",
+              "balance": "606546.33",
+              "date": "2025-07-31 10:01:52",
+              "index": 10,
+              "name": "崔兴萍",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6214855311244491",
+              "amount": "60000.00",
+              "balance": "193179.42",
+              "date": "2025-07-24 13:30:55",
+              "index": 11,
+              "name": "崔兴萍",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "2310024524205000023441",
+              "amount": "50900.00",
+              "balance": "63481.28",
+              "date": "2025-03-06 22:33:10",
+              "index": 12,
+              "name": "山东星略物联科技有限公司",
+              "summary": "大额支付"
+            },
+            {
+              "account": "6214835414406205",
+              "amount": "-50000.00",
+              "balance": "460.81",
+              "date": "2025-02-23 03:47:35",
+              "index": 13,
+              "name": "李法昌",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6214835414406205",
+              "amount": "-50000.00",
+              "balance": "45284.53",
+              "date": "2025-02-16 13:11:37",
+              "index": 14,
+              "name": "李法昌",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6214835414406205",
+              "amount": "-50000.00",
+              "balance": "95972.03",
+              "date": "2025-02-14 10:03:41",
+              "index": 15,
+              "name": "李法昌",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6214835414406205",
+              "amount": "-50000.00",
+              "balance": "145693.96",
+              "date": "2025-02-13 08:46:13",
+              "index": 16,
+              "name": "李法昌",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6214835414406205",
+              "amount": "-50000.00",
+              "balance": "199453.28",
+              "date": "2025-02-12 12:26:30",
+              "index": 17,
+              "name": "李法昌",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6214835414406205",
+              "amount": "-50000.00",
+              "balance": "254136.38",
+              "date": "2025-02-11 15:27:06",
+              "index": 18,
+              "name": "李法昌",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6230661631011961546",
+              "amount": "50000.00",
+              "balance": "300252.07",
+              "date": "2025-02-08 16:05:52",
+              "index": 19,
+              "name": "梁娜",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6230661631011961546",
+              "amount": "50000.00",
+              "balance": "250317.07",
+              "date": "2025-02-07 12:04:22",
+              "index": 20,
+              "name": "梁娜",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6230661631011961546",
+              "amount": "50000.00",
+              "balance": "200317.07",
+              "date": "2025-02-07 12:02:37",
+              "index": 21,
+              "name": "梁娜",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6230661631011961546",
+              "amount": "50000.00",
+              "balance": "150429.07",
+              "date": "2025-02-06 11:31:48",
+              "index": 22,
+              "name": "梁娜",
+              "summary": "跨行转账"
+            },
+            {
+              "account": "6230661631011961546",
+              "amount": "50000.00",
+              "balance": "53057.55",
+              "date": "2025-02-02 17:20:10",
+              "index": 23,
+              "name": "梁娜",
+              "summary": "跨行转账"
+            }
+          ],
+          "title": "大额交易列表（>50,000元）",
+          "type": "table"
+        }
+      ],
+      "id": "large_tx",
+      "title": "大额交易",
+      "type": "section"
+    },
+    {
+      "elements": [
+        {
+          "content": "九、风险检测",
+          "level": 1,
+          "type": "heading"
+        },
+        {
+          "alert_type": "warning",
+          "confidence": 0.9039659084565203,
+          "content": "前 10% 的天数（25/251 天）；交易笔数集中度: 26.5%（182/686 笔）；交易金额集中度: 90.4%",
+          "title": "账户突然活跃",
+          "type": "alert"
+        },
+        {
+          "alert_type": "warning",
+          "confidence": 1.0,
+          "content": "2025年05月13日，该账户转出1003.98元，余额从1003.98元降至0.00元。；2026年01月05日，该账户转出19000.00元，余额从19025.52元降至25.52元。；2026年01月05日，该账户转出5988.20元，余额从6025.52元降至37.32元。",
+          "title": "账户余额被清空",
+          "type": "alert"
+        },
+        {
+          "alert_type": "info",
+          "confidence": 0.6671525753158406,
+          "content": "节假日期间交易占比 33.4%（共229笔，金额 811014.73 元），涉及节日：周末(168笔), 春节(26笔), 国庆(12笔), 清明(8笔), 劳动节(8笔), 端午(5笔), 元旦(2笔)",
+          "title": "交易时间异常",
+          "type": "alert"
+        },
+        {
+          "alert_type": "warning",
+          "confidence": 0.8104956268221575,
+          "content": "2026年01月03日，该账户转入19000.00元，余额19010.62元，2026年01月05日，该账户转出24988.20元，余额37.32元。；2026年01月05日，该账户转入6000.00元，余额6025.52元，2026年01月09日，该账户转出6006.69元，余额18.83元。",
+          "title": "账户余额异常",
+          "type": "alert"
+        }
+      ],
+      "id": "risk",
+      "title": "风险检测",
+      "type": "section"
+    },
+    {
+      "elements": [
+        {
+          "content": "十、疑似虚假流水分析",
+          "level": 1,
+          "type": "heading"
+        },
+        {
+          "alert_type": "error",
+          "confidence": 0.5109489051094891,
+          "content": "余额不连贯，疑似虚假流水；共校验 685 条相邻记录，发现 15 条余额不连贯；2025-01-11 余额14268.24与推算余额14286.14不一致（上一条2025-01-10余额14308.14，支出22.00）；2025-01-11 余额14290.24与推算余额14250.34不一致（上一条2025-01-11余额14268.24，支出17.90）；2025-01-11 余额14251.24与推算余额14273.24不一致（上一条2025-01-11余额14290.24，支出17.00）；2025-01-13 余额14177.14与推算余额14216.14不一致（上一条2025-01-11余额14241.24，支出25.10）；2025-01-13 余额14202.24与推算余额14138.14不一致（上一条2025-01-13余额14177.14，支出39.00）",
+          "title": "余额连贯性分析",
+          "type": "alert"
+        }
+      ],
+      "id": "fake_detection",
+      "title": "疑似虚假流水分析",
+      "type": "section"
+    }
+  ]
+}

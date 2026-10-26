@@ -1,6 +1,6 @@
 # ActForce
 
-ActForce 开源单用户版：通用授权层 + 业务引擎 + 社区版二进制 + 公开 Web UI。
+ActForce 开源单用户版：通用授权层 + 业务引擎 + 社区版二进制 + 公开 Web UI + 桌面壳 + 发行工具。
 
 产品关系：
 
@@ -20,11 +20,21 @@ crates/
   common/          通用工具
   agent-core/      Agent 引擎
   file-service/    文件服务
+  agent-crawl/     网页抓取
+  agent-doc/       文档处理
+  agent-gui/       桌面自动化
+  agent-image/     图像处理
+  aupage/          AuPage 渲染/导出
+  ofd-file/        OFD 解析/转换
+  tansearch/       全文检索 CLI
+  teamchat/        团队聊天服务
 web/               公开 Web UI（AppShell + Entitlements）
-packages/
-  chat-ui/         共享聊天 UI
-  file-manager/    共享文件管理 UI
+packages/          共享前端包（chat-ui / file-manager）
+desktop/           Electron 桌面壳
+distribution/      Docker / 安装器发行文件
 ```
+
+不包含 `actforce-mega`、`actforce-super`、`super-license`、`agent-analysis`。
 
 ## 运行
 
@@ -56,8 +66,22 @@ pnpm build   # 产物输出到 web/dist
 
 后端从仓库根目录读取 `web/dist`。
 
+### 桌面
+
+```bash
+cd desktop
+pnpm install
+pnpm dev:actforce
+pnpm build:actforce
+```
+
+### 发行
+
+- `distribution/actforce/docker/`：Docker 构建
+- `distribution/actforce/installer/`：安装/升级工具
+
 ## 与 ActForce-Super 的关系
 
 - 本仓库只包含开源/公共实现，不包含 license 管理、私有技能、企业 UI。
-- 私有 `actforce_super` 通过 git 依赖本仓库的 `actforce-core` / `entitlement`，不复制公共代码。
+- 私有 `actforce_super` 通过 git 依赖本仓库的 `actforce-core` / `entitlement` / `actforce-web`，不复制公共代码。
 - 依赖方向只能是 `actforce-super → actforce`，不反向。
