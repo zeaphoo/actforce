@@ -7,7 +7,6 @@ ActForce 开源单用户版：通用授权层 + 业务引擎 + 社区版二进�
 ```text
 actforce（免费入门，本仓库）
   └─→ actforce-super（私有企业版，独立仓库，依赖本仓库）
-         └─→ actforce-mega（多用户/团队版）
 ```
 
 ## 仓库结构
@@ -38,7 +37,7 @@ thecli/            独立 workspace（CLI 工具集，自带 Cargo.toml/Cargo.lo
 
 > qsv 二进制不提交 Git；Docker 构建前先运行 `distribution/docker/vendor/qsv/build.sh`。
 
-不包含 `actforce-mega`、`actforce-super`、`super-license`、`agent-analysis`。
+不包含 `actforce-super`、`super-license`、`agent-analysis`。
 
 ## 运行
 

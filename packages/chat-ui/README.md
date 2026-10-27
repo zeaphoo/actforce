@@ -5,7 +5,7 @@ subset of [`@assistant-ui/react`](https://github.com/assistant-ui/assistant-ui)
 that our apps actually use, with a near drop-in surface so existing call sites
 need little or no change.
 
-Designed to be consumed by both `web` and `web-mega`.
+Designed to be consumed by the ActForce web app.
 
 ## What's included
 
@@ -43,23 +43,13 @@ primitive, speech, etc. Build these in your application when you need them.
 
 ## Install
 
-This package is not published; consume it via a relative/workspace reference.
-Examples:
+This package is not published; consume it via a relative/workspace reference:
 
 ```jsonc
 // web/package.json
 {
   "dependencies": {
     "@actforce/chat-ui": "file:../../packages/chat-ui"
-  }
-}
-```
-
-```jsonc
-// web-mega/pnpm-workspace.yaml adjustment + package.json
-{
-  "dependencies": {
-    "@actforce/chat-ui": "workspace:*"
   }
 }
 ```
