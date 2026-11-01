@@ -16,7 +16,6 @@ members = [
     "crates/actforce-core",
     "crates/actforce",
 ]
-exclude = ["viacli"]
 
 [workspace.package]
 version = "0.1.0"
