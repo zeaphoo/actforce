@@ -2,7 +2,7 @@ use anyhow::Result;
 use clap::{Parser, Subcommand, ValueEnum};
 
 #[derive(Parser)]
-#[command(name = "thecli")]
+#[command(name = "viacli")]
 #[command(about = "多功能命令行工具集")]
 #[command(version)]
 struct Cli {

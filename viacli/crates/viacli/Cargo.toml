@@ -1,5 +1,5 @@
 [package]
-name = "thecli"
+name = "viacli"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
@@ -20,5 +20,5 @@ web_search = { path = "../web_search" }
 env_logger = "0.11"
 
 [[bin]]
-name = "thecli"
+name = "viacli"
 path = "src/main.rs"

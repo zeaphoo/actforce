@@ -14,7 +14,7 @@ QQ Bot 的命令行管理工具，支持消息发送、Webhook 管理等功能�
 ### config - 配置账号
 
 ```bash
-thecli qqbot config [选项]
+viacli qqbot config [选项]
 ```
 
 选项：
@@ -29,10 +29,10 @@ thecli qqbot config [选项]
 示例：
 ```bash
 # 使用 token 配置
-thecli qqbot config --token "102146862:your-secret"
+viacli qqbot config --token "102146862:your-secret"
 
 # 使用环境变量
-thecli qqbot config --use-env
+viacli qqbot config --use-env
 
 # 环境变量名：
 # QQBOT_APP_ID
@@ -42,19 +42,19 @@ thecli qqbot config --use-env
 ### list - 列出已配置账号
 
 ```bash
-thecli qqbot list
+viacli qqbot list
 ```
 
 ### remove - 删除账号配置
 
 ```bash
-thecli qqbot remove <account_id>
+viacli qqbot remove <account_id>
 ```
 
 ### send - 发送消息
 
 ```bash
-thecli qqbot send [选项] <目标ID> <消息内容>
+viacli qqbot send [选项] <目标ID> <消息内容>
 ```
 
 选项：
@@ -66,30 +66,30 @@ thecli qqbot send [选项] <目标ID> <消息内容>
 示例：
 ```bash
 # 发送私聊消息
-thecli qqbot send --account default "openid" "你好"
+viacli qqbot send --account default "openid" "你好"
 
 # 发送群消息
-thecli qqbot send --account default --target-type group "group_openid" "大家好"
+viacli qqbot send --account default --target-type group "group_openid" "大家好"
 
 # 引用回复
-thecli qqbot send --account default "openid" "回复内容" --reply-to "msg_id"
+viacli qqbot send --account default "openid" "回复内容" --reply-to "msg_id"
 ```
 
 ### send-markdown - 发送 Markdown 消息
 
 ```bash
-thecli qqbot send-markdown [选项] <目标ID> <Markdown内容>
+viacli qqbot send-markdown [选项] <目标ID> <Markdown内容>
 ```
 
 示例：
 ```bash
-thecli qqbot send-markdown --account default "openid" "**粗体** 和 *斜体*"
+viacli qqbot send-markdown --account default "openid" "**粗体** 和 *斜体*"
 ```
 
 ### send-image - 发送图片
 
 ```bash
-thecli qqbot send-image [选项] <目标ID> <图片路径或URL>
+viacli qqbot send-image [选项] <目标ID> <图片路径或URL>
 ```
 
 选项：
@@ -101,27 +101,27 @@ thecli qqbot send-image [选项] <目标ID> <图片路径或URL>
 示例：
 ```bash
 # 发送本地图片
-thecli qqbot send-image --account default "openid" "/path/to/image.png"
+viacli qqbot send-image --account default "openid" "/path/to/image.png"
 
 # 发送网络图片
-thecli qqbot send-image --account default "openid" "https://example.com/image.png"
+viacli qqbot send-image --account default "openid" "https://example.com/image.png"
 ```
 
 ### send-file - 发送文件
 
 ```bash
-thecli qqbot send-file [选项] <目标ID> <文件路径>
+viacli qqbot send-file [选项] <目标ID> <文件路径>
 ```
 
 示例：
 ```bash
-thecli qqbot send-file --account default "openid" "/path/to/document.pdf"
+viacli qqbot send-file --account default "openid" "/path/to/document.pdf"
 ```
 
 ### typing - 发送输入状态
 
 ```bash
-thecli qqbot typing [选项] <目标ID>
+viacli qqbot typing [选项] <目标ID>
 ```
 
 选项：
@@ -131,20 +131,20 @@ thecli qqbot typing [选项] <目标ID>
 
 示例：
 ```bash
-thecli qqbot typing --account default "openid"
-thecli qqbot typing --account default --seconds 30 "openid"
+viacli qqbot typing --account default "openid"
+viacli qqbot typing --account default --seconds 30 "openid"
 ```
 
 ### gateway - 获取 Gateway URL
 
 ```bash
-thecli qqbot gateway --account <account_id>
+viacli qqbot gateway --account <account_id>
 ```
 
 ### monitor - 监控模式（接收消息）
 
 ```bash
-thecli qqbot monitor [选项] --account <account_id>
+viacli qqbot monitor [选项] --account <account_id>
 ```
 
 选项：
@@ -155,16 +155,16 @@ thecli qqbot monitor [选项] --account <account_id>
 示例：
 ```bash
 # 启动监控
-thecli qqbot monitor --account default
+viacli qqbot monitor --account default
 
 # 带自动回复
-thecli qqbot monitor --account default --auto-reply "收到"
+viacli qqbot monitor --account default --auto-reply "收到"
 ```
 
 ### ping - 测试连接
 
 ```bash
-thecli qqbot ping --account <account_id>
+viacli qqbot ping --account <account_id>
 ```
 
 ## 消息类型说明
@@ -181,16 +181,16 @@ thecli qqbot ping --account <account_id>
 
 ```bash
 # 发送图片
-thecli qqbot send --account default "openid" "查看图片 <image src='/path/to/image.png'>"
+viacli qqbot send --account default "openid" "查看图片 <image src='/path/to/image.png'>"
 
 # 发送语音
-thecli qqbot send --account default "openid" "<voice src='/path/to/audio.mp3'>"
+viacli qqbot send --account default "openid" "<voice src='/path/to/audio.mp3'>"
 
 # 发送视频
-thecli qqbot send --account default "openid" "<video src='/path/to/video.mp4'>"
+viacli qqbot send --account default "openid" "<video src='/path/to/video.mp4'>"
 
 # 发送文件
-thecli qqbot send --account default "openid" "<file src='/path/to/file.pdf'>"
+viacli qqbot send --account default "openid" "<file src='/path/to/file.pdf'>"
 ```
 
 ## 引用回复
@@ -199,21 +199,21 @@ thecli qqbot send --account default "openid" "<file src='/path/to/file.pdf'>"
 
 ```bash
 # 先获取消息 ID，然后回复
-thecli qqbot send --account default "openid" "回复内容" --reply-to "原消息ID"
+viacli qqbot send --account default "openid" "回复内容" --reply-to "原消息ID"
 ```
 
 ## 完整示例
 
 ```bash
 # 1. 配置账号
-thecli qqbot config --token "102146862:your-secret-here"
+viacli qqbot config --token "102146862:your-secret-here"
 
 # 2. 查看配置
-thecli qqbot list
+viacli qqbot list
 
 # 3. 发送测试消息
-thecli qqbot send --account default "user_openid" "Hello QQ Bot!"
+viacli qqbot send --account default "user_openid" "Hello QQ Bot!"
 
 # 4. 启动监控接收消息
-thecli qqbot monitor --account default
+viacli qqbot monitor --account default
 ```

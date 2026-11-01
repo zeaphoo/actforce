@@ -9,20 +9,20 @@
 ## 用法
 
 ```bash
-thecli weather <城市名>
+viacli weather <城市名>
 ```
 
 ## 示例
 
 ```bash
 # 查询北京天气
-thecli weather 北京
+viacli weather 北京
 
 # 查询上海天气
-thecli weather Shanghai
+viacli weather Shanghai
 
 # 查询纽约天气
-thecli weather NewYork
+viacli weather NewYork
 ```
 
 ## 输出说明

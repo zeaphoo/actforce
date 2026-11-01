@@ -1,4 +1,4 @@
-# thecli 多架构编译 Dockerfile
+# viacli 多架构编译 Dockerfile
 # 支持: linux/amd64, linux/arm64
 
 ARG REGISTRY=docker.m.daocloud.io/
@@ -38,13 +38,13 @@ RUN case "${TARGETARCH}" in \
             echo "Building for arm64..." && \
             cargo build --release --target aarch64-unknown-linux-musl && \
             mkdir -p /out && \
-            cp /build/target/aarch64-unknown-linux-musl/release/thecli /out/thecli \
+            cp /build/target/aarch64-unknown-linux-musl/release/viacli /out/viacli \
             ;; \
         amd64) \
             echo "Building for amd64..." && \
             cargo build --release --target x86_64-unknown-linux-musl && \
             mkdir -p /out && \
-            cp /build/target/x86_64-unknown-linux-musl/release/thecli /out/thecli \
+            cp /build/target/x86_64-unknown-linux-musl/release/viacli /out/viacli \
             ;; \
         *) \
             echo "unsupported TARGETARCH=${TARGETARCH}" >&2; \
@@ -52,8 +52,8 @@ RUN case "${TARGETARCH}" in \
             ;; \
     esac
 
-RUN file /out/thecli && ls -lh /out/thecli
+RUN file /out/viacli && ls -lh /out/viacli
 
 FROM scratch AS export
 
-COPY --from=build /out/thecli /thecli
+COPY --from=build /out/viacli /viacli

@@ -152,7 +152,7 @@ impl ConfigManager {
 
 /// 获取配置目录
 fn get_config_dir() -> Result<PathBuf> {
-    let dirs = directories::ProjectDirs::from("com", "thecli", "qqbot")
+    let dirs = directories::ProjectDirs::from("com", "viacli", "qqbot")
         .ok_or_else(|| anyhow::anyhow!("Failed to get config directory"))?;
     Ok(dirs.config_dir().to_path_buf())
 }

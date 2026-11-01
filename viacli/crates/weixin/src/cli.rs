@@ -375,7 +375,7 @@ fn cmd_list(account_manager: &AccountManager, outformat: &OutputFormat) -> Resul
         OutputFormat::Text => {
             if account_ids.is_empty() {
                 println!("{} 没有已登录的账号", "ℹ".cyan());
-                println!("使用 `thecli weixin login` 登录");
+                println!("使用 `viacli weixin login` 登录");
             } else {
                 println!("\n{}", "已登录的账号:".cyan().bold());
                 println!("{}", "━".repeat(50).dimmed());

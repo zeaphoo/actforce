@@ -32,7 +32,7 @@
 ### login - 登录微信（扫码）
 
 ```bash
-thecli weixin login [选项]
+viacli weixin login [选项]
 ```
 
 选项：
@@ -44,22 +44,22 @@ thecli weixin login [选项]
 示例：
 ```bash
 # 默认登录
-thecli weixin login
+viacli weixin login
 
 # 指定超时时间
-thecli weixin login --timeout 60000
+viacli weixin login --timeout 60000
 ```
 
 ### list - 列出已登录账号
 
 ```bash
-thecli weixin list
+viacli weixin list
 ```
 
 ### logout - 登出账号
 
 ```bash
-thecli weixin logout <account_id>
+viacli weixin logout <account_id>
 ```
 
 ### get-updates - 获取消息更新
@@ -67,7 +67,7 @@ thecli weixin logout <account_id>
 **需要 `-a` 参数**
 
 ```bash
-thecli weixin get-updates [选项] -a <account_id>
+viacli weixin get-updates [选项] -a <account_id>
 ```
 
 选项：
@@ -79,8 +79,8 @@ thecli weixin get-updates [选项] -a <account_id>
 
 示例：
 ```bash
-thecli weixin get-updates -a <account_id>
-thecli weixin get-updates -a <account_id> --timeout 60000
+viacli weixin get-updates -a <account_id>
+viacli weixin get-updates -a <account_id> --timeout 60000
 ```
 
 ### send - 发送文本消息
@@ -88,7 +88,7 @@ thecli weixin get-updates -a <account_id> --timeout 60000
 **需要 `-a` 参数**
 
 ```bash
-thecli weixin send [选项] -a <account_id> <目标用户ID> <消息内容>
+viacli weixin send [选项] -a <account_id> <目标用户ID> <消息内容>
 ```
 
 选项：
@@ -100,10 +100,10 @@ thecli weixin send [选项] -a <account_id> <目标用户ID> <消息内容>
 示例：
 ```bash
 # 发送消息
-thecli weixin send -a <account_id> "user_id" "你好"
+viacli weixin send -a <account_id> "user_id" "你好"
 
 # 引用回复
-thecli weixin send -a <account_id> "user_id" "回复内容" --context "context_token"
+viacli weixin send -a <account_id> "user_id" "回复内容" --context "context_token"
 ```
 
 ### typing - 发送输入状态
@@ -111,7 +111,7 @@ thecli weixin send -a <account_id> "user_id" "回复内容" --context "context_t
 **需要 `-a` 参数**
 
 ```bash
-thecli weixin typing -a <account_id> <目标用户ID> <status>
+viacli weixin typing -a <account_id> <目标用户ID> <status>
 ```
 
 状态值：
@@ -120,8 +120,8 @@ thecli weixin typing -a <account_id> <目标用户ID> <status>
 
 示例：
 ```bash
-thecli weixin typing -a <account_id> "user_id" typing
-thecli weixin typing -a <account_id> "user_id" cancel
+viacli weixin typing -a <account_id> "user_id" typing
+viacli weixin typing -a <account_id> "user_id" cancel
 ```
 
 ### get-upload-url - 获取上传 URL
@@ -129,7 +129,7 @@ thecli weixin typing -a <account_id> "user_id" cancel
 **需要 `-a` 参数**
 
 ```bash
-thecli weixin get-upload-url -a <account_id> <文件路径> <媒体类型> <目标用户ID>
+viacli weixin get-upload-url -a <account_id> <文件路径> <媒体类型> <目标用户ID>
 ```
 
 媒体类型：
@@ -140,7 +140,7 @@ thecli weixin get-upload-url -a <account_id> <文件路径> <媒体类型> <目�
 
 示例：
 ```bash
-thecli weixin get-upload-url -a <account_id> "/path/to/image.png" image "user_id"
+viacli weixin get-upload-url -a <account_id> "/path/to/image.png" image "user_id"
 ```
 
 ### monitor - 监控模式（持续获取消息）
@@ -148,7 +148,7 @@ thecli weixin get-upload-url -a <account_id> "/path/to/image.png" image "user_id
 **需要 `-a` 参数**
 
 ```bash
-thecli weixin monitor [选项] -a <account_id>
+viacli weixin monitor [选项] -a <account_id>
 ```
 
 选项：
@@ -160,10 +160,10 @@ thecli weixin monitor [选项] -a <account_id>
 示例：
 ```bash
 # 启动监控
-thecli weixin monitor -a <account_id>
+viacli weixin monitor -a <account_id>
 
 # 指定轮询间隔
-thecli weixin monitor -a <account_id> --interval 5
+viacli weixin monitor -a <account_id> --interval 5
 ```
 
 ### send-image - 发送图片消息
@@ -171,7 +171,7 @@ thecli weixin monitor -a <account_id> --interval 5
 **需要 `-a` 参数**
 
 ```bash
-thecli weixin send-image [选项] -a <account_id> <目标用户ID> <图片文件路径>
+viacli weixin send-image [选项] -a <account_id> <目标用户ID> <图片文件路径>
 ```
 
 选项：
@@ -183,8 +183,8 @@ thecli weixin send-image [选项] -a <account_id> <目标用户ID> <图片文件
 
 示例：
 ```bash
-thecli weixin send-image -a <account_id> "user_id" "/path/to/image.png"
-thecli weixin send-image -a <account_id> "user_id" "/path/to/image.png" --text "图片说明"
+viacli weixin send-image -a <account_id> "user_id" "/path/to/image.png"
+viacli weixin send-image -a <account_id> "user_id" "/path/to/image.png" --text "图片说明"
 ```
 
 ### send-video - 发送视频消息
@@ -192,7 +192,7 @@ thecli weixin send-image -a <account_id> "user_id" "/path/to/image.png" --text "
 **需要 `-a` 参数**
 
 ```bash
-thecli weixin send-video [选项] -a <account_id> <目标用户ID> <视频文件路径>
+viacli weixin send-video [选项] -a <account_id> <目标用户ID> <视频文件路径>
 ```
 
 选项：
@@ -204,7 +204,7 @@ thecli weixin send-video [选项] -a <account_id> <目标用户ID> <视频文件
 
 示例：
 ```bash
-thecli weixin send-video -a <account_id> "user_id" "/path/to/video.mp4"
+viacli weixin send-video -a <account_id> "user_id" "/path/to/video.mp4"
 ```
 
 ### send-file - 发送文件消息
@@ -212,7 +212,7 @@ thecli weixin send-video -a <account_id> "user_id" "/path/to/video.mp4"
 **需要 `-a` 参数**
 
 ```bash
-thecli weixin send-file [选项] -a <account_id> <目标用户ID> <文件路径>
+viacli weixin send-file [选项] -a <account_id> <目标用户ID> <文件路径>
 ```
 
 选项：
@@ -224,7 +224,7 @@ thecli weixin send-file [选项] -a <account_id> <目标用户ID> <文件路径>
 
 示例：
 ```bash
-thecli weixin send-file -a <account_id> "user_id" "/path/to/document.pdf"
+viacli weixin send-file -a <account_id> "user_id" "/path/to/document.pdf"
 ```
 
 ### get-config - 获取配置
@@ -232,7 +232,7 @@ thecli weixin send-file -a <account_id> "user_id" "/path/to/document.pdf"
 **需要 `-a` 参数**
 
 ```bash
-thecli weixin get-config [选项] -a <account_id> <用户ID>
+viacli weixin get-config [选项] -a <account_id> <用户ID>
 ```
 
 选项：
@@ -245,22 +245,22 @@ thecli weixin get-config [选项] -a <account_id> <用户ID>
 
 ```bash
 # 1. 登录微信（扫码）
-thecli weixin login
+viacli weixin login
 
 # 2. 查看已登录账号
-thecli weixin list
+viacli weixin list
 
 # 3. 发送测试消息（需要 -a 指定账号）
-thecli weixin send -a <account_id> "user_id" "Hello Weixin!"
+viacli weixin send -a <account_id> "user_id" "Hello Weixin!"
 
 # 4. 发送图片（需要 -a 指定账号）
-thecli weixin send-image -a <account_id> "user_id" "/path/to/image.png"
+viacli weixin send-image -a <account_id> "user_id" "/path/to/image.png"
 
 # 5. 启动监控接收消息（需要 -a 指定账号）
-thecli weixin monitor -a <account_id>
+viacli weixin monitor -a <account_id>
 
 # 6. 登出
-thecli weixin logout <account_id>
+viacli weixin logout <account_id>
 ```
 
 ## 注意事项

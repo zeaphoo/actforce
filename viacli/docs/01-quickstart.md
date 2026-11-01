@@ -1,8 +1,8 @@
-# thecli 快速入门
+# viacli 快速入门
 
 ## 简介
 
-thecli 是一个多功能命令行工具集，集成天气查询、金融数据、微信和 QQ Bot 等功能。
+viacli 是一个多功能命令行工具集，集成天气查询、金融数据、微信和 QQ Bot 等功能。
 
 ## 安装
 
@@ -11,12 +11,12 @@ thecli 是一个多功能命令行工具集，集成天气查询、金融数据�
 ```bash
 # 克隆仓库
 git clone <repository-url>
-cd thecli
+cd viacli
 
 # 编译 Release 版本
 cargo build --release
 
-# 编译后的二进制在 target/release/thecli
+# 编译后的二进制在 target/release/viacli
 ```
 
 ### 多架构编译（Docker）
@@ -26,21 +26,21 @@ cargo build --release
 ./build.sh
 
 # 输出目录
-dist/amd64/thecli
-dist/arm64/thecli
+dist/amd64/viacli
+dist/arm64/viacli
 ```
 
 ## 基本用法
 
 ```bash
 # 查看帮助
-thecli --help
+viacli --help
 
 # 查看版本
-thecli --version
+viacli --version
 
 # 查看子命令帮助
-thecli <command> --help
+viacli <command> --help
 ```
 
 ## 可用命令
@@ -68,5 +68,5 @@ thecli <command> --help
 
 示例：
 ```bash
-thecli qqbot list --outformat json
+viacli qqbot list --outformat json
 ```

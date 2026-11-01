@@ -10,7 +10,7 @@ fn generate_client_id() -> String {
     let mut rng = rand::thread_rng();
     let mut bytes = [0u8; 16];
     rng.fill(&mut bytes);
-    format!("thecli-weixin-{}", hex::encode(bytes))
+    format!("viacli-weixin-{}", hex::encode(bytes))
 }
 
 /// 格式化消息为文本

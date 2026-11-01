@@ -32,7 +32,7 @@ packages/          共享前端包（chat-ui / file-manager）
 docs/              产品与标准设计文档（AuPage 等）
 desktop/           Electron 桌面壳
 distribution/      Docker / 安装器发行文件（含 qsv vendor）
-thecli/            独立 workspace（CLI 工具集，自带 Cargo.toml/Cargo.lock）
+viacli/            独立 workspace（CLI 工具集，自带 Cargo.toml/Cargo.lock）
 ```
 
 > qsv 二进制不提交 Git；Docker 构建前先运行 `distribution/docker/vendor/qsv/build.sh`。
@@ -78,19 +78,19 @@ pnpm dev:actforce
 pnpm build:actforce
 ```
 
-### thecli
+### viacli
 
-`thecli` 是独立 workspace（根 workspace 通过 `exclude` 排除），保留自己的 `Cargo.toml` 和 `Cargo.lock`：
+`viacli` 是独立 workspace（根 workspace 通过 `exclude` 排除），保留自己的 `Cargo.toml` 和 `Cargo.lock`：
 
 ```bash
-cd thecli
+cd viacli
 cargo build --release
 
 # 或从仓库根目录
-cargo build --manifest-path thecli/Cargo.toml --release
+cargo build --manifest-path viacli/Cargo.toml --release
 ```
 
-产物：`thecli/target/release/thecli`。Python 版本已不再维护。
+产物：`viacli/target/release/viacli`。Python 版本已不再维护。
 
 ### 发行
 

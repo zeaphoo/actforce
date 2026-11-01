@@ -311,7 +311,7 @@ fn cmd_list(config_manager: &ConfigManager, outformat: &OutputFormat) -> Result<
         OutputFormat::Text => {
             if accounts.is_empty() {
                 println!("{} 没有已配置的账号", "ℹ".cyan());
-                println!("使用 `thecli qqbot config --token <app_id:secret>` 配置账号");
+                println!("使用 `viacli qqbot config --token <app_id:secret>` 配置账号");
             } else {
                 println!("\n{}", "已配置的账号:".cyan().bold());
                 println!("{}", "━".repeat(50).dimmed());

@@ -144,8 +144,8 @@ impl Executor {
         "git", "make", "ripgrep", "rg", "jq", "qsv",
         // actforce 特有命令
         "agent-image", "agent-doc", "agent-crawl", "tansearch",
-        // 对齐 agentlite ALLOWED_BASH_PROGRAMS：补齐 aupage / thecli / thedata-cli
-        "aupage", "thecli", "thedata-cli",
+        // 对齐 agentlite ALLOWED_BASH_PROGRAMS：补齐 aupage / viacli
+        "aupage", "viacli",
     ];
 
     // 与 actforce 对齐的危险程序列表（包含 bash/sh/zsh）

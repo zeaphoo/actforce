@@ -12,38 +12,38 @@
 ### stock - 查询股票价格
 
 ```bash
-thecli finance stock <股票代码>
+viacli finance stock <股票代码>
 ```
 
 示例：
 ```bash
 # 查询苹果股票
-thecli finance stock AAPL
+viacli finance stock AAPL
 
 # 查询特斯拉股票
-thecli finance stock TSLA
+viacli finance stock TSLA
 
 # 查询上证指数
-thecli finance stock 000001
+viacli finance stock 000001
 ```
 
 ### crypto - 查询加密货币价格
 
 ```bash
-thecli finance crypto <币种>
+viacli finance crypto <币种>
 ```
 
 示例：
 ```bash
 # 查询比特币
-thecli finance crypto bitcoin
+viacli finance crypto bitcoin
 
 # 查询以太坊
-thecli finance crypto ethereum
+viacli finance crypto ethereum
 
 # 使用简称
-thecli finance crypto btc
-thecli finance crypto eth
+viacli finance crypto btc
+viacli finance crypto eth
 ```
 
 ## 输出信息

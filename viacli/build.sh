@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 OUT_DIR="${SCRIPT_DIR}/dist"
 DOCKERFILE_PATH="${SCRIPT_DIR}/Dockerfile"
-BUILDER_NAME="thecli-builder"
+BUILDER_NAME="viacli-builder"
 
 mkdir -p "${OUT_DIR}"
 
@@ -38,9 +38,9 @@ build_one() {
     --output "type=local,dest=${dest_dir}" \
     "${SCRIPT_DIR}"
 
-  chmod +x "${dest_dir}/thecli" || true
-  echo "✓ Exported ${platform} -> ${dest_dir}/thecli"
-  ls -lh "${dest_dir}/thecli" 2>/dev/null || true
+  chmod +x "${dest_dir}/viacli" || true
+  echo "✓ Exported ${platform} -> ${dest_dir}/viacli"
+  ls -lh "${dest_dir}/viacli" 2>/dev/null || true
 }
 
 # Build both architectures
@@ -51,6 +51,6 @@ echo ""
 echo "========================================"
 echo "✓ Build complete!"
 echo "Output files:"
-echo "  - ${OUT_DIR}/amd64/thecli"
-echo "  - ${OUT_DIR}/arm64/thecli"
+echo "  - ${OUT_DIR}/amd64/viacli"
+echo "  - ${OUT_DIR}/arm64/viacli"
 echo "========================================"

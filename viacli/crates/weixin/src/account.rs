@@ -36,12 +36,12 @@ impl AccountManager {
     fn resolve_state_dir() -> Result<PathBuf> {
         use directories::ProjectDirs;
 
-        if let Some(proj_dirs) = ProjectDirs::from("com", "thecli", "weixin") {
+        if let Some(proj_dirs) = ProjectDirs::from("com", "viacli", "weixin") {
             Ok(proj_dirs.data_dir().to_path_buf())
         } else {
             // 回退到用户主目录
             let home = dirs::home_dir().ok_or_else(|| anyhow!("无法获取主目录"))?;
-            Ok(home.join(".thecli").join("weixin"))
+            Ok(home.join(".viacli").join("weixin"))
         }
     }
 
